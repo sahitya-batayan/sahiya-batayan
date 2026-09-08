@@ -4,56 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>সাহিত্য বাতায়ন - সাহিত্য, সংস্কৃতি ও সংবাদের আলোয় জাগ্রত মনন</title>
-<meta name="description" content="সাহিত্য বাতায়ন - নির্ভরযোগ্য অনলাইন সাহিত্য ও সংবাদ পত্রিকা">
 <meta name="theme-color" content="#c0392b">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="সাহিত্য বাতায়ন">
-<link rel="manifest" href='data:application/manifest+json,{"name":"সাহিত্য বাতায়ন","short_name":"SahityaBatayan","start_url":".","display":"standalone","background_color":"#f4f4f4","theme_color":"#c0392b","icons":[{"src":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0iIzhCMDAwMCIvPjx0ZXh0IHg9Ijk2IiB5PSIxMTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4MCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSJib2xkIj5TQjwvdGV4dD48L3N2Zz4=","sizes":"192x192","type":"image/svg+xml"}]}'>
+<link rel="manifest" href='data:application/manifest+json,{"name":"Sahitya Batayan","short_name":"SahityaBatayan","start_url":".","display":"standalone","background_color":"#f4f4f4","theme_color":"#c0392b"}'>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.3/html2pdf.bundle.min.js"></script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- লাল টপ বার -->
-<div class="top-bar-red no-print">
-<div class="container">
+<div class="top-bar-red no-print"><div class="container">
 <div class="top-date" id="currentDate"></div>
-<div class="top-flags">🇧 🇬🇧 🇩🇪</div>
+<div class="top-flags">🇧 🇬 🇩</div>
 <div class="top-icons">
-<a onclick="showPage('home');document.getElementById('searchBox').classList.add('show');document.getElementById('searchInput').focus()" title="খুঁজুন"><i class="fas fa-search"></i></a>
-<a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-<a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-<a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-<a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-<a href="https://wa.me/8801905883389" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-<a onclick="toggleTheme()" title="ডার্ক মোড"><i class="fas fa-moon"></i></a>
-</div>
-</div>
-</div>
+<a onclick="showPage('home');document.getElementById('searchBox').classList.add('show')"><i class="fas fa-search"></i></a>
+<a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-youtube"></i></a>
+<a href="https://wa.me/8801905883389" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a onclick="toggleTheme()"><i class="fas fa-moon"></i></a>
+</div></div></div>
 
-<!-- হেডার -->
 <header class="header no-print">
 <div class="logo-wrap" onclick="showPage('home')">
-<svg class="sun-svg" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-<defs><linearGradient id="sunG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDB913"/><stop offset="1" stop-color="#F26522"/></linearGradient></defs>
+<svg class="sun-svg" viewBox="0 0 200 120"><defs><linearGradient id="sunG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDB913"/><stop offset="1" stop-color="#F26522"/></linearGradient></defs>
 <g stroke="#F7941D" stroke-width="5" stroke-linecap="round"><line x1="100" y1="8" x2="100" y2="26"/><line x1="62" y1="16" x2="70" y2="32"/><line x1="138" y1="16" x2="130" y2="32"/><line x1="32" y1="38" x2="48" y2="48"/><line x1="168" y1="38" x2="152" y2="48"/><line x1="14" y1="66" x2="34" y2="68"/><line x1="186" y1="66" x2="166" y2="68"/></g>
-<path d="M55 88 A45 45 0 0 1 145 88 Z" fill="url(#sunG)"/>
-<path d="M8 96 Q100 72 192 96" stroke="#111" stroke-width="7" fill="none" stroke-linecap="round"/>
-</svg>
-<div class="logo-text">
-<span class="logo-daily">অনলাইন</span>
-<span class="logo-main"><span class="black">সাহিত্য</span><span class="red"> বাতায়ন</span></span>
-</div>
+<path d="M55 88 A45 45 0 0 1 145 88 Z" fill="url(#sunG)"/><path d="M8 96 Q100 72 192 96" stroke="#111" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
+<div class="logo-text"><span class="logo-daily">অনলাইন</span><span class="logo-main"><span class="black">সাহিত্য</span><span class="red"> বাতায়ন</span></span></div>
 </div>
 <div class="tagline">সাহিত্য, সংস্কৃতি ও সংবাদের আলোয় জাগ্রত মনন</div>
 </header>
 
-<!-- মেনু -->
-<nav class="nav-bar no-print">
-<div class="nav-container">
+<nav class="nav-bar no-print"><div class="nav-container">
 <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
 <div class="nav-menu" id="navMenu">
 <a class="nav-item active" onclick="showPage('home');setActiveNav(this)"><i class="fas fa-home"></i> হোম</a>
@@ -64,13 +46,10 @@
 <a class="nav-item" onclick="filterCategory('ফিচার');setActiveNav(this)">ফিচার</a>
 <div class="nav-item" style="position:relative">শিল্প-সাহিত্য <i class="fas fa-caret-down"></i>
 <div class="dropdown">
-<a onclick="filterCategory('বুক রিভিউ')">বুক রিভিউ</a>
-<a onclick="filterCategory('অনুবাদ')">অনুবাদ</a>
-<a onclick="filterCategory('ভ্রমণ')">ভ্রমণ</a>
-<a onclick="filterCategory('সাক্ষাৎকার')">সাক্ষাৎকার</a>
+<a onclick="filterCategory('বুক রিভিউ')">বুক রিভিউ</a><a onclick="filterCategory('অনুবাদ')">অনুবাদ</a>
+<a onclick="filterCategory('ভ্রমণ')">ভ্রমণ</a><a onclick="filterCategory('সাক্ষাৎকার')">সাক্ষাৎকার</a>
 <a onclick="filterCategories('খেলাধুলা,সাংস্কৃতিক')">খেলা-সংস্কৃতি</a>
-<a onclick="filterCategory('তরুণ উদীয়মান কলম')">তরুণ কলম</a>
-<a onclick="filterCategory('নারীদের কথা')">নারীদের কথা</a>
+<a onclick="filterCategory('তরুণ উদীয়মান কলম')">তরুণ কলম</a><a onclick="filterCategory('নারীদের কথা')">নারীদের কথা</a>
 </div></div>
 <a class="nav-item" onclick="showPage('classics');setActiveNav(this)">📚 ক্লাসিক</a>
 <a class="nav-item" onclick="showPage('gallery');setActiveNav(this)">🖼 গ্যালারি</a>
@@ -78,34 +57,18 @@
 <a class="nav-item" onclick="showPage('epaper');setActiveNav(this)">📰 ই-পেপার</a>
 <a class="nav-item" onclick="showPage('admin');setActiveNav(this)">⚙️ সম্পাদক</a>
 </div>
-<div class="nav-actions">
-<a class="admin-link" onclick="showPage(currentUser?'dashboard':'login')"><i class="fas fa-user-pen"></i> লেখক</a>
-</div>
-</div>
-</nav>
+<div class="nav-actions"><a class="admin-link" onclick="showPage(currentUser?'dashboard':'login')"><i class="fas fa-user-pen"></i> লেখক</a></div>
+</div></nav>
 
-<!-- ব্রেকিং নিউজ -->
-<div class="breaking-bar no-print">
-<span class="breaking-label">ব্রেকিং নিউজ</span>
-<div class="breaking-scroll"><span id="tickerText">📰 লোড হচ্ছে...</span></div>
-</div>
+<div class="breaking-bar no-print"><span class="breaking-label">ব্রেকিং নিউজ</span><div class="breaking-scroll"><span id="tickerText">📰 লোড হচ্ছে...</span></div></div>
 
-<!-- হোম -->
-<div id="page-home" class="page active">
-<div class="container main-content">
-<div class="search-box" id="searchBox">
-<input id="searchInput" placeholder="লেখা, লেখক বা বিভাগ খুঁজুন... (Enter চাপুন)" onkeyup="if(event.key==='Enter')doSearch()">
-<button onclick="doSearch()"><i class="fas fa-search"></i> খুঁজুন</button>
-</div>
+<div id="page-home" class="page active"><div class="container main-content">
+<div class="search-box" id="searchBox"><input id="searchInput" placeholder="লেখা, লেখক বা বিভাগ খুঁজুন... (Enter)" onkeyup="if(event.key==='Enter')doSearch()"><button onclick="doSearch()"><i class="fas fa-search"></i> খুঁজুন</button></div>
 <h2 class="section-title">সাম্প্রতিক প্রকাশনা</h2>
 <div class="articles-grid" id="articlesGrid"></div>
-
 <h2 class="section-title">📚 ক্লাসিক সাহিত্য ভাণ্ডার</h2>
-<p style="color:var(--text-light);margin-bottom:20px">রবীন্দ্রনাথ, নজরুল, জীবনানন্দ, শরৎচন্দ্র, বনফুল — ক্লিক করে পড়ুন</p>
 <div class="classic-grid" id="classicGrid"></div>
-
 <h2 class="section-title">📖 বই ড্রপ</h2>
-<p style="color:var(--text-light);margin-bottom:20px">প্রিয় বইয়ের রিভিউ পড়ুন, বইটি সংগ্রহ করুন</p>
 <div class="book-grid">
 <div class="book-card"><h4>📕 গীতাঞ্জলি</h4><div class="book-author">রবীন্দ্রনাথ ঠাকুর</div><p>নোবেল পুরস্কার বিজয়ী কাব্যগ্রন্থ।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=গীতাঞ্জলি" target="_blank">🛒 বইটি দেখুন</a></div>
 <div class="book-card"><h4>📕 অগ্নিবীণা</h4><div class="book-author">কাজী নজরুল ইসলাম</div><p>বিদ্রোহী কবির প্রথম কাব্যগ্রন্থ।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=অগ্নিবীণা" target="_blank">🛒 বইটি দেখুন</a></div>
@@ -114,45 +77,24 @@
 <div class="book-card"><h4>📕 ফেলুদা সমগ্র</h4><div class="book-author">সত্যজিৎ রায়</div><p>বাংলার সেরা গোয়েন্দা সিরিজ।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=ফেলুদা+সমগ্র" target="_blank">🛒 বইটি দেখুন</a></div>
 <div class="book-card"><h4>📕 রূপসী বাংলা</h4><div class="book-author">জীবনানন্দ দাশ</div><p>বাংলার রূপের অনন্য কাব্য।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=রূপসী+বাংলা" target="_blank">🛒 বইটি দেখুন</a></div>
 </div>
-
-<div class="newsletter no-print">
-<h3>📧 নিউজলেটার সাবস্ক্রাইব করুন</h3><p>নতুন লেখা সরাসরি আপনার ইমেইলে পান</p>
-<div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="আপনার ইমেইল দিন"><button onclick="subscribeNewsletter()">সাবস্ক্রাইব</button></div>
-</div>
-
+<div class="newsletter no-print"><h3>📧 নিউজলেটার সাবস্ক্রাইব</h3><p>নতুন লেখা সরাসরি ইমেইলে পান</p>
+<div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="আপনার ইমেইল"><button onclick="subscribeNewsletter()">সাবস্ক্রাইব</button></div></div>
 <div class="calendar-section no-print"><div class="calendar-header" id="calendarHeader"></div><div class="calendar-grid" id="calendarGrid"></div></div>
 <h2 class="section-title">আমাদের লেখকবৃন্দ</h2>
 <div class="writers-grid" id="writersGrid"></div>
-</div>
-</div>
+</div></div>
 
-<!-- ক্লাসিক -->
-<div id="page-classics" class="page">
-<div class="container main-content">
-<h2 class="section-title">📚 ক্লাসিক সাহিত্য ভাণ্ডার</h2>
-<div class="articles-grid" id="classicArticlesGrid"></div>
-</div>
-</div>
+<div id="page-classics" class="page"><div class="container main-content"><h2 class="section-title">📚 ক্লাসিক সাহিত্য ভাণ্ডার</h2><div class="articles-grid" id="classicArticlesGrid"></div></div></div>
+<div id="page-gallery" class="page"><div class="container main-content"><h2 class="section-title">🖼 ছবি গ্যালারি</h2><div class="gallery-grid" id="galleryGrid"></div></div></div>
 
-<!-- গ্যালারি -->
-<div id="page-gallery" class="page">
-<div class="container main-content">
-<h2 class="section-title">🖼 ছবি গ্যালারি</h2>
-<p style="color:var(--text-light);margin-bottom:20px">লেখার সাথে জুড়ে দেওয়া ছবিগুলো — ক্লিক করলে বড় হয়ে খুলবে</p>
-<div class="gallery-grid" id="galleryGrid"></div>
-</div>
-</div>
-
-<!-- আর্টিকেল -->
-<div id="page-article" class="page">
-<div class="container main-content">
+<div id="page-article" class="page"><div class="container main-content">
 <div id="articleView"></div>
 <div class="audio-bar no-print" id="audioBar">
 <button class="btn-primary" onclick="speakArticle()"><i class="fas fa-volume-up"></i> লেখা শুনুন</button>
 <button class="btn-secondary" onclick="stopSpeak()"><i class="fas fa-stop"></i> থামান</button>
 <span style="color:var(--text-light);font-size:.9rem">বাংলা কণ্ঠে পড়ে শোনাবে</span>
 </div>
-<div class="font-controls no-print"><span>ফন্ট সাইজ:</span><button onclick="changeFontSize(-1)"><i class="fas fa-minus"></i></button><button onclick="changeFontSize(1)"><i class="fas fa-plus"></i></button><button onclick="changeFontSize(0)"><i class="fas fa-undo"></i> রিসেট</button><span id="fontSizeDisplay" style="margin-left:10px">16px</span></div>
+<div class="font-controls no-print"><span>ফন্ট সাইজ:</span><button onclick="changeFontSize(-1)">−</button><button onclick="changeFontSize(1)">+</button><button onclick="changeFontSize(0)">রিসেট</button><span id="fontSizeDisplay" style="margin-left:10px">16px</span></div>
 <div class="action-box no-print"><h3><i class="fas fa-share-alt"></i> শেয়ার করুন</h3>
 <div class="share-buttons">
 <button class="share-btn facebook" onclick="shareOn('facebook')"><i class="fab fa-facebook-f"></i> Facebook</button>
@@ -166,96 +108,59 @@
 </div></div>
 <div id="relatedArticles" class="no-print"></div>
 <div class="comments-section no-print"><h3>💬 মন্তব্য করুন</h3>
-<div class="comment-form"><input type="text" id="commentName" placeholder="আপনার নাম"><textarea id="commentText" rows="4" placeholder="আপনার মন্তব্য..."></textarea><button onclick="addComment()">মন্তব্য প্রকাশ করুন</button></div>
+<div class="comment-form"><input id="commentName" placeholder="আপনার নাম"><textarea id="commentText" rows="4" placeholder="আপনার মন্তব্য..."></textarea><button onclick="addComment()">মন্তব্য প্রকাশ করুন</button></div>
 <div id="commentsList"></div></div>
-</div>
-</div>
+</div></div>
 
-<!-- ক্যাটাগরি -->
-<div id="page-category" class="page"><div class="container main-content"><h2 class="section-title" id="categoryTitle">ক্যাটাগরি</h2><div class="articles-grid" id="categoryGrid"></div></div></div>
-
-<!-- লেখকবৃন্দ -->
+<div id="page-category" class="page"><div class="container main-content"><h2 class="section-title" id="categoryTitle"></h2><div class="articles-grid" id="categoryGrid"></div></div></div>
 <div id="page-writers" class="page"><div class="container main-content"><h2 class="section-title">আমাদের লেখকবৃন্দ</h2><div class="writers-grid" id="writersGridPage"></div></div></div>
 
-<!-- লেখক লগইন / রেজিস্ট্রেশন -->
-<div id="page-login" class="page">
-<div class="container main-content">
-<div class="login-box">
+<div id="page-login" class="page"><div class="container main-content"><div class="login-box">
 <h2>✍️ লেখক লগইন</h2>
 <div id="login-form">
-<div class="form-group"><label>ইউজারনেম</label><input id="login-user" placeholder="আপনার ইউজারনেম"></div>
-<div class="form-group"><label>পাসওয়ার্ড</label><input type="password" id="login-pass" placeholder="পাসওয়ার্ড"></div>
+<div class="form-group"><label>ইউজারনেম</label><input id="login-user"></div>
+<div class="form-group"><label>পাসওয়ার্ড</label><input type="password" id="login-pass"></div>
 <button class="btn-primary" onclick="writerLogin()">লগইন</button>
 <button class="btn-secondary" onclick="showRegister()">নতুন রেজিস্ট্রেশন</button>
 </div>
 <div id="register-form" style="display:none">
-<div class="form-group"><label>ইউজারনেম (ইংরেজিতে) *</label><input id="r-username"></div>
-<div class="form-group"><label>নাম (বাংলায়) *</label><input id="r-name-bn"></div>
-<div class="form-group"><label>নাম (ইংরেজিতে) *</label><input id="r-name-en"></div>
+<div class="form-group"><label>ইউজারনেম (ইংরেজি) *</label><input id="r-username"></div>
+<div class="form-group"><label>নাম (বাংলা) *</label><input id="r-name-bn"></div>
+<div class="form-group"><label>নাম (ইংরেজি) *</label><input id="r-name-en"></div>
 <div class="form-group"><label>ইমেইল *</label><input type="email" id="r-email"></div>
 <div class="form-group"><label>পাসওয়ার্ড *</label><input type="password" id="r-password"></div>
-<div class="form-group"><label>সংক্ষিপ্ত পরিচিতি</label><textarea id="r-bio" rows="2"></textarea></div>
+<div class="form-group"><label>পরিচিতি</label><textarea id="r-bio" rows="2"></textarea></div>
 <button class="btn-primary" onclick="writerRegister()">যোগ দিন</button>
 <button class="btn-secondary" onclick="showLogin()">লগইনে ফিরুন</button>
 </div>
-</div>
-</div>
-</div>
+</div></div></div>
 
-<!-- লেখক ড্যাশবোর্ড -->
-<div id="page-dashboard" class="page">
-<div class="container main-content">
-<div class="admin-panel">
+<div id="page-dashboard" class="page"><div class="container main-content"><div class="admin-panel">
 <h2>👤 লেখক ড্যাশবোর্ড — <span id="dash-name"></span> <button class="btn-danger" style="float:right" onclick="writerLogout()">লগআউট</button></h2>
 <h3 style="margin:20px 0 10px">নতুন লেখা জমা দিন (সম্পাদকের অনুমোদনের পর প্রকাশিত হবে)</h3>
 <div class="form-group"><label>শিরোনাম</label><input id="d-title"></div>
 <div class="form-group"><label>বিভাগ</label><select id="d-category"><option>কবিতা</option><option>ছড়া</option><option>ছোটগল্প</option><option>অণুগল্প</option><option>প্রবন্ধ</option><option>কলাম</option><option>ফিচার</option><option>সংবাদ</option><option>বুক রিভিউ</option><option>অনুবাদ</option><option>ভ্রমণ</option><option>সাক্ষাৎকার</option><option>খেলাধুলা</option><option>সাংস্কৃতিক</option><option>তরুণ উদীয়মান কলম</option><option>নারীদের কথা</option></select></div>
-<div class="form-group"><label>ছবি</label><input type="file" id="d-image" accept="image/*" onchange="handleDashImage(this)"><input type="hidden" id="d-imageData"></div>
+<div class="form-group"><label>ছবি</label><input type="file" id="d-image" accept="image/*" onchange="compressImage(this,'d-imageData')"><input type="hidden" id="d-imageData"></div>
 <div class="form-group"><label>বিষয়বস্তু</label><textarea id="d-content" rows="8"></textarea></div>
 <button class="btn-primary" onclick="dashSubmit()">জমা দিন</button>
 <h3 style="margin:25px 0 10px">আমার লেখা</h3>
 <div id="dash-list"></div>
-</div>
-</div>
-</div>
+</div></div></div>
 
-<!-- ই-পেপার -->
-<div id="page-epaper" class="page">
-<div class="container main-content">
-<div class="epaper-wrap">
-<div class="epaper-head">
-<h2>📰 ই-পেপার</h2>
-<div id="epaper-date" style="color:var(--text-light)"></div>
-<div>
-<button class="btn-primary" onclick="printEpaper()">🖨️ প্রিন্ট / PDF</button>
-<button class="btn-secondary" onclick="showPage('home')">← প্রচ্ছদ</button>
-</div>
-</div>
-<p style="color:var(--text-light);margin-bottom:15px">আসল পত্রিকার মতো পাতা ধরে ধরে পড়ুন — নিচের বাটন থেকে পাতা বদলান।</p>
+<div id="page-epaper" class="page"><div class="container main-content"><div class="epaper-wrap">
+<div class="epaper-head"><h2>📰 ই-পেপার</h2><div id="epaper-date" style="color:var(--text-light)"></div>
+<div><button class="btn-primary" onclick="printEpaper()">🖨️ প্রিন্ট / PDF</button><button class="btn-secondary" onclick="showPage('home')">← প্রচ্ছদ</button></div></div>
+<p style="color:var(--text-light);margin-bottom:15px">পাতা ধরে ধরে পড়ুন — নিচের বাটন থেকে পাতা বদলান।</p>
 <div class="epaper-grid" id="epaper-body"></div>
-<div class="epaper-nav">
-<button class="ep-page-btn" onclick="gotoEpaper(epaperPage-1)">‹</button>
-<span id="epaper-pages" style="display:contents"></span>
-<button class="ep-page-btn" onclick="gotoEpaper(epaperPage+1)">›</button>
-</div>
+<div class="epaper-nav"><button class="ep-page-btn" onclick="gotoEpaper(epaperPage-1)">‹</button><span id="epaper-pages" style="display:contents"></span><button class="ep-page-btn" onclick="gotoEpaper(epaperPage+1)">›</button></div>
 <div style="text-align:center;margin-top:10px;color:var(--text-light)" id="epaper-pageno"></div>
-</div>
-</div>
-</div>
+</div></div></div>
 
-<!-- সম্পর্কে -->
-<div id="page-about" class="page"><div class="container"><div class="info-page"><h2>আমাদের সম্পর্কে</h2><p><strong>সাহিত্য বাতায়ন</strong> একটি অনলাইন সাহিত্য, সংবাদ ও সংস্কৃতি বিষয়ক পত্রিকা।</p><h3>🎯 আমাদের লক্ষ্য</h3><ul><li>নতুন ও প্রতিষ্ঠিত লেখকদের লেখা প্রকাশের উন্মুক্ত মঞ্চ</li><li>বাংলা সাহিত্যের চর্চা বৃদ্ধি</li><li>তরুণ প্রজন্মকে লেখালেখিতে উৎসাহিত করা</li></ul><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
+<div id="page-about" class="page"><div class="container"><div class="info-page"><h2>আমাদের সম্পর্কে</h2><p><strong>সাহিত্য বাতায়ন</strong> একটি অনলাইন সাহিত্য, সংবাদ ও সংস্কৃতি বিষয়ক পত্রিকা।</p><h3>🎯 লক্ষ্য</h3><ul><li>লেখকদের উন্মুক্ত মঞ্চ</li><li>বাংলা সাহিত্যের চর্চা বৃদ্ধি</li><li>তরুণ প্রজন্মকে উৎসাহ</li></ul><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
+<div id="page-privacy" class="page"><div class="container"><div class="info-page"><h2>গোপনীয়তা নীতি</h2><p>আমরা আপনার কোনো তথ্য তৃতীয় পক্ষের কাছে বিক্রি করি না।</p><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
+<div id="page-contact" class="page"><div class="container"><div class="info-page"><h2>যোগাযোগ</h2><p>📧 sahityabatayan@gmail.com</p><p>📞 01905883389 (হোয়াটসঅ্যাপ)</p><p>📘 <a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank">Facebook পেইজ</a></p><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
 
-<!-- গোপনীয়তা -->
-<div id="page-privacy" class="page"><div class="container"><div class="info-page"><h2>গোপনীয়তা নীতি</h2><p>সাহিত্য বাতায়ন আপনার গোপনীয়তাকে গুরুত্ব দেয়। আমরা কোনো তথ্য তৃতীয় পক্ষের কাছে বিক্রি করি না।</p><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
-
-<!-- যোগাযোগ -->
-<div id="page-contact" class="page"><div class="container"><div class="info-page"><h2>যোগাযোগ</h2><p>📧 sahityabatayan@gmail.com</p><p>📞 01905883389 (হোয়াটসঅ্যাপ)</p><p>📘 <a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank" style="color:var(--primary)">Facebook পেইজ</a></p><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
-
-<!-- অ্যাডমিন -->
-<div id="page-admin" class="page">
-<div class="container main-content">
-<div class="admin-panel">
+<div id="page-admin" class="page"><div class="container main-content"><div class="admin-panel">
 <h2>⚙️ সম্পাদক প্যানেল</h2>
 <div style="margin-bottom:20px"><button class="btn-primary" onclick="showAdminTab('submit')">নতুন লেখা</button><button class="btn-info" onclick="showAdminTab('pending')">অনুমোদন</button><button class="btn-success" onclick="showAdminTab('published')">প্রকাশিত</button><button class="btn-warning" onclick="showAdminTab('stats')">📊 পরিসংখ্যান</button></div>
 <div id="tab-submit">
@@ -263,38 +168,29 @@
 <div class="form-group"><label>শিরোনাম</label><input id="aTitle"></div>
 <div class="form-group"><label>লেখক</label><input id="aAuthor"></div>
 <div class="form-group"><label>ক্যাটাগরি</label><select id="aCategory"><option>সংবাদ</option><option>কবিতা</option><option>ছড়া</option><option>ছোটগল্প</option><option>অণুগল্প</option><option>প্রবন্ধ</option><option>কলাম</option><option>ফিচার</option><option>বুক রিভিউ</option><option>অনুবাদ</option><option>ভ্রমণ</option><option>সাক্ষাৎকার</option><option>খেলাধুলা</option><option>সাংস্কৃতিক</option><option>তরুণ উদীয়মান কলম</option><option>নারীদের কথা</option></select></div>
-<div class="form-group"><label>ছবি</label><input type="file" id="aImageFile" accept="image/*" onchange="handleFileUpload(this)"><input type="hidden" id="aImage"></div>
+<div class="form-group"><label>ছবি</label><input type="file" id="aImageFile" accept="image/*" onchange="compressImage(this,'aImage')"><input type="hidden" id="aImage"></div>
 <div class="form-group"><label>বিষয়বস্তু</label><textarea id="aContent" rows="10"></textarea></div>
-<div class="form-group"><label>🔑 সম্পাদক কোড</label><input type="password" id="aEditorCode" placeholder="সম্পাদক হলে কোড দিন"></div>
+<div class="form-group"><label>🔑 সম্পাদক কোড (দ্রুত প্রকাশের জন্য)</label><input type="password" id="aEditorCode" placeholder="সম্পাদক হলে কোড দিন"></div>
 <button class="btn-primary" onclick="submitArticle()">জমা দিন</button>
 </div>
-<div id="tab-pending" style="display:none"><h3>অনুমোদনের অপেক্ষায়</h3><div id="pendingArticlesList"></div></div>
+<div id="tab-pending" style="display:none"><h3>অনুমোদনের অপেক্ষায় (শিট + এই ব্রাউজার)</h3><div id="pendingArticlesList"></div></div>
 <div id="tab-published" style="display:none"><h3>প্রকাশিত আর্টিকেল</h3><div id="publishedArticlesList"></div></div>
 <div id="tab-stats" style="display:none"><h3>📊 পরিসংখ্যান</h3><div id="statsContent"></div></div>
-</div>
-</div>
-</div>
+</div></div></div>
 
-<!-- ফুটার -->
-<footer class="footer no-print">
-<div class="container">
+<footer class="footer no-print"><div class="container">
 <div class="footer-content">
 <div class="footer-section"><h3>সাহিত্য বাতায়ন</h3><p>সাহিত্য, সংস্কৃতি ও সংবাদের আলোয় জাগ্রত মনন।</p>
 <div class="social-links"><a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="https://wa.me/8801905883389" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
 <a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank" class="fb-follow">📘 পেইজ ফলো করুন</a></div>
-<div class="footer-section"><h3>দ্রুত লিংক</h3><ul><li><a onclick="showPage('about')">আমাদের সম্পর্কে</a></li><li><a onclick="showPage('privacy')">গোপনীয়তা নীতি</a></li><li><a onclick="showPage('contact')">যোগাযোগ</a></li><li><a onclick="showPage('writers')">লেখক ডিরেক্টরি</a></li><li><a onclick="showPage('gallery')">ছবি গ্যালারি</a></li><li><a onclick="showPage('admin')">এডমিন প্যানেল</a></li><li><a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank">📘 Facebook</a></li></ul></div>
+<div class="footer-section"><h3>দ্রুত লিংক</h3><ul><li><a onclick="showPage('about')">আমাদের সম্পর্কে</a></li><li><a onclick="showPage('privacy')">গোপনীয়তা নীতি</a></li><li><a onclick="showPage('contact')">যোগাযোগ</a></li><li><a onclick="showPage('gallery')">ছবি গ্যালারি</a></li><li><a onclick="showPage('admin')">এডমিন প্যানেল</a></li></ul></div>
 <div class="footer-section"><h3>যোগাযোগ</h3><p>📞 01905883389</p><p>📧 sahityabatayan@gmail.com</p><p>📍 বাংলাদেশ</p></div>
 </div>
 <div class="footer-bottom"><p>সম্পাদক ও প্রকাশক: মুহিতুল ইসলাম মুন্না</p><p>© ২০২৬ সাহিত্য বাতায়ন - সর্বস্বত্ব সংরক্ষিত</p></div>
-</div>
-</footer>
+</div></footer>
 
-<!-- ভাসমান WhatsApp বাটন -->
-<a class="wa-float no-print" target="_blank" href="https://wa.me/8801905883389?text=সাহিত্য%20বাতায়ন%20-%20আমি%20লেখা%20পাঠাতে%20চাই"><i class="fab fa-whatsapp"></i></a>
-
-<!-- ছবি বড় করে দেখা -->
+<a class="wa-float no-print" target="_blank" href="https://wa.me/8801905883389?text=সাহিত্য%20বাতায়ন%20-%20লেখা%20পাঠাতে%20চাই"><i class="fab fa-whatsapp"></i></a>
 <div class="lightbox" id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
-
 <button class="back-to-top no-print" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 <div id="print-sheet"></div>
 
