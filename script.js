@@ -1,6 +1,5 @@
 const SCRIPT_URLS=[
-'https://script.google.com/macros/s/AKfycbxXnm_qrdwIVuQPtM3yAe3AfBFVIVvuLxXieSQCkGx9_OOZur2maOMquKbMFDDpOH0/exec',
-'https://script.google.com/macros/s/AKfycbx4AfLm4OiXm0XzOOi703_AQxEaLBa3oe3Ly0aAoB-xu17KSLwaSYXw6AciwbqIQ3Pq/exec'
+'https://script.google.com/macros/s/AKfycbx5C72MF4UL5OSCAbg9Me5PQObcBlxxfTKHU5XVBXw5-PDEuq5UV5BsmIT66MdT1q9k/exec'
 ];
 let WORK_URL=SCRIPT_URLS[0];
 const EDITOR_CODE='SB2026';
