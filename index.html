@@ -3,197 +3,659 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>সাহিত্য বাতায়ন - সাহিত্য, সংস্কৃতি ও সংবাদের আলোয় জাগ্রত মনন</title>
-<meta name="theme-color" content="#c0392b">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href='data:application/manifest+json,{"name":"Sahitya Batayan","short_name":"SahityaBatayan","start_url":".","display":"standalone","background_color":"#f4f4f4","theme_color":"#c0392b"}'>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.3/html2pdf.bundle.min.js"></script>
-<link rel="stylesheet" href="style.css">
+<title>সাহিত্য বাতায়ন - অনলাইন পত্রিকা</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#c0392b;--primary-dark:#922b21;--secondary:#1f3a5f;--text:#2c3e50;--text-light:#7f8c8d;--bg-light:#f8f9fa;--border:#e0e0e0;--shadow:0 2px 10px rgba(0,0,0,.1)}
+body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text);background:var(--bg-light)}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.top-bar{background:var(--secondary);color:#fff;padding:8px 0;font-size:14px}
+.top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px}
+.main-header{background:#fff;padding:20px 0;text-align:center;border-bottom:3px solid var(--primary)}
+.site-logo{max-height:120px;margin:0 auto 5px;display:block}
+.site-title{font-size:42px;font-weight:900;color:var(--primary);margin-bottom:5px}
+.site-tagline{color:var(--text-light);font-size:16px}
+.main-nav{background:var(--primary);position:sticky;top:0;z-index:100}
+.main-nav .container{display:flex;align-items:center;flex-wrap:wrap}
+.nav-menu{list-style:none;display:flex;flex-wrap:wrap;flex:1}
+.nav-menu li a{display:block;color:#fff;text-decoration:none;padding:12px 14px;font-weight:500;font-size:15px}
+.nav-menu li a:hover,.nav-menu li a.active{background:var(--primary-dark)}
+.admin-link{background:rgba(255,255,255,.2)}
+.mobile-menu-btn{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;padding:15px}
+.stats-bar{background:linear-gradient(135deg,var(--secondary),var(--primary));color:#fff;padding:20px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px;text-align:center}
+.stat-item{background:rgba(255,255,255,.1);padding:15px;border-radius:8px}
+.stat-number{font-size:28px;font-weight:900;display:block;margin-bottom:5px}
+.stat-label{font-size:13px;opacity:.9}
+.breaking-news{background:#fff3cd;padding:12px 0;border-bottom:1px solid var(--border)}
+.breaking-news .container{display:flex;align-items:center;gap:15px}
+.breaking-label{background:var(--primary);color:#fff;padding:4px 12px;border-radius:3px;font-weight:600;font-size:13px;white-space:nowrap}
+.main-content{padding:30px 0;min-height:400px}
+.featured-section{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:30px}
+.featured-main{position:relative;border-radius:8px;overflow:hidden;min-height:400px;cursor:pointer;box-shadow:var(--shadow);background:#fff}
+.featured-side{display:flex;flex-direction:column;gap:15px}
+.featured-item{background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer}
+.featured-item img{width:100%;height:120px;object-fit:cover}
+.featured-item-body{padding:15px}
+.featured-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.9));color:#fff;padding:30px 20px 20px}
+.featured-overlay .category-tag{background:var(--primary);padding:4px 10px;border-radius:3px;font-size:12px;display:inline-block;margin-bottom:10px}
+.featured-overlay h2{font-size:24px;margin-bottom:8px;line-height:1.4}
+.featured-overlay .meta{font-size:13px;opacity:.9}
+.section-title{font-size:24px;font-weight:700;margin:30px 0 20px;padding-bottom:10px;border-bottom:3px solid var(--primary);display:inline-block}
+.section-note{color:var(--text-light);font-size:14px;margin-bottom:15px}
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;margin-bottom:40px}
+.post-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:var(--shadow);transition:transform .3s;cursor:pointer}
+.post-card:hover{transform:translateY(-5px)}
+.post-card img{width:100%;height:200px;object-fit:cover;background:#f0f0f0}
+.post-card-body{padding:20px}
+.category-tag{background:var(--primary);color:#fff;padding:3px 10px;border-radius:3px;font-size:12px;display:inline-block;margin-bottom:10px}
+.post-card h3{font-size:18px;margin-bottom:10px;line-height:1.5}
+.post-card .excerpt{color:var(--text-light);font-size:14px;margin-bottom:15px;line-height:1.6}
+.post-card .meta{font-size:13px;color:var(--text-light);margin-bottom:10px}
+.buy-btn{display:inline-block;background:#f85c2c;color:#fff;padding:8px 16px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:600}
+.share-buttons{display:flex;gap:8px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--border)}
+.share-btn{padding:6px 12px;border-radius:4px;color:#fff;text-decoration:none;font-size:12px;font-weight:500;border:none;cursor:pointer}
+.share-facebook{background:#1877f2}.share-whatsapp{background:#25d366}.share-copy{background:var(--secondary)}.share-pdf{background:#e74c3c}
+.article-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:1000;overflow-y:auto;padding:40px 20px}
+.article-modal.active{display:block}
+.modal-content{background:#fff;max-width:800px;margin:0 auto;border-radius:8px;padding:40px;position:relative}
+.modal-close{position:absolute;top:15px;right:20px;background:none;border:none;font-size:32px;cursor:pointer;color:var(--text-light)}
+.modal-header-brand{display:flex;align-items:center;justify-content:center;gap:15px;padding:15px 0 20px;border-bottom:2px solid var(--primary);margin-bottom:20px}
+.modal-header-brand .brand-text{font-size:22px;font-weight:900;color:var(--primary)}
+.modal-header-brand .brand-sub{font-size:11px;color:var(--text-light);display:block}
+.modal-content h1{font-size:32px;margin-bottom:15px;line-height:1.4}
+.modal-content .meta{color:var(--text-light);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.modal-content .meta a{color:var(--primary);font-weight:600;text-decoration:none}
+.modal-content .article-image{width:100%;max-height:400px;object-fit:cover;border-radius:8px;margin-bottom:25px}
+.modal-content .article-body{font-size:17px;line-height:2;position:relative;padding:10px 0}
+.modal-content .article-body a{color:var(--primary);word-break:break-all}
+.modal-content .article-body::before{content:'সাহিত্য বাতায়ন';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-size:70px;font-weight:900;color:rgba(192,57,43,0.06);pointer-events:none;z-index:0;white-space:nowrap}
+.modal-content .article-body>*{position:relative;z-index:1}
+.comments-section{margin-top:30px;padding-top:20px;border-top:2px solid var(--border)}
+.comments-section h3{margin-bottom:15px;color:var(--primary)}
+.comment-form textarea,.reply-box textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:5px;font-family:inherit;font-size:15px;resize:vertical;min-height:70px;margin-bottom:10px}
+.comment-form input,.reply-box input{width:100%;padding:12px;border:1px solid var(--border);border-radius:5px;font-family:inherit;font-size:15px;margin-bottom:10px}
+.comment-submit{background:var(--primary);color:#fff;border:none;padding:10px 25px;border-radius:5px;font-size:15px;cursor:pointer}
+.comment-list{display:flex;flex-direction:column;gap:15px;margin-top:20px}
+.comment-item{background:var(--bg-light);padding:15px;border-radius:8px}
+.comment-header{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px}
+.comment-author{font-weight:600;color:var(--primary)}
+.comment-date{color:var(--text-light)}
+.reply-toggle{background:none;border:none;color:var(--primary);font-size:13px;cursor:pointer;margin-top:8px;font-weight:600}
+.reply-wrap{margin-left:30px;border-left:3px solid var(--border);padding-left:15px;margin-top:10px}
+.modal-footer-brand{text-align:center;padding-top:20px;margin-top:25px;border-top:2px solid var(--primary);color:var(--text-light);font-size:13px}
+.modal-footer-brand strong{color:var(--primary)}
+.writer-wrap,.admin-panel,.info-page{max-width:900px;margin:30px auto;background:#fff;border-radius:8px;box-shadow:var(--shadow);padding:35px}
+.writer-wrap h2,.admin-panel h2,.info-page h2{margin-bottom:8px;color:var(--primary)}
+.writer-note{color:var(--text-light);font-size:14px;margin-bottom:25px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;margin-bottom:8px;font-weight:600}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 15px;border:1px solid var(--border);border-radius:5px;font-family:inherit;font-size:15px}
+.form-group input[type=file]{background:#fff;cursor:pointer;padding:10px}
+.radio-group{display:flex;gap:15px;margin-bottom:10px}
+.radio-group label{display:flex;align-items:center;gap:5px;font-weight:400;cursor:pointer}
+.agreement-box{background:#fff3cd;padding:15px;border-radius:5px;border-left:4px solid var(--primary);font-size:14px;margin-bottom:10px}
+.image-preview{display:none;max-width:250px;margin-top:12px;border-radius:8px;box-shadow:var(--shadow)}
+.form-actions{display:flex;gap:10px;margin-top:25px;flex-wrap:wrap}
+.btn-primary{background:var(--primary);color:#fff;border:none;padding:12px 30px;border-radius:5px;font-size:16px;font-weight:600;cursor:pointer}
+.btn-secondary{background:var(--text-light);color:#fff;border:none;padding:12px 30px;border-radius:5px;font-size:16px;cursor:pointer}
+.small-btn{background:var(--secondary);color:#fff;border:none;padding:6px 15px;border-radius:4px;cursor:pointer;font-size:13px}
+.notification{position:fixed;top:20px;right:20px;padding:15px 25px;border-radius:5px;color:#fff;font-weight:500;z-index:2000;background:#27ae60}
+.admin-tabs{display:flex;gap:10px;margin-bottom:25px;border-bottom:2px solid var(--border);padding-bottom:10px;flex-wrap:wrap}
+.admin-tab{padding:8px 20px;background:var(--bg-light);border:none;border-radius:5px;cursor:pointer;font-size:14px;font-weight:600}
+.admin-tab.active{background:var(--primary);color:#fff}
+.admin-content{display:none}
+.admin-content.active{display:block}
+.pending-item{background:var(--bg-light);padding:15px;border-radius:8px;border-left:4px solid var(--primary);margin-bottom:15px}
+.pending-actions{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.approve-btn{background:#27ae60;color:#fff;border:none;padding:8px 20px;border-radius:5px;cursor:pointer}
+.reject-btn,.delete-btn{background:#e74c3c;color:#fff;border:none;padding:8px 20px;border-radius:5px;cursor:pointer}
+.writer-card{background:#fff;border-radius:8px;box-shadow:var(--shadow);padding:25px;margin-bottom:20px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
+.writer-avatar{width:80px;height:80px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900;flex-shrink:0}
+.writer-info{flex:1}
+.writer-info h3{margin-bottom:5px;color:var(--primary)}
+.writer-info .writer-meta{font-size:13px;color:var(--text-light);margin-bottom:10px}
+.profile-table{width:100%;border-collapse:collapse;margin-bottom:25px}
+.profile-table td{padding:12px;border-bottom:1px solid var(--border)}
+.profile-table td:first-child{font-weight:600;width:40%;background:var(--bg-light)}
+.site-footer{background:var(--secondary);color:#fff;padding:40px 0 20px;margin-top:50px}
+.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-bottom:30px}
+.footer-content h3{margin-bottom:15px}
+.footer-content a{color:#bdc3c7;text-decoration:none}
+.footer-bottom{text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:14px;color:#bdc3c7}
+@media(max-width:768px){
+.site-title{font-size:28px}
+.nav-menu{display:none;width:100%}
+.nav-menu.active{display:flex;flex-direction:column}
+.mobile-menu-btn{display:block;margin-left:auto}
+.featured-section,.posts-grid{grid-template-columns:1fr}
+.modal-content{padding:25px}
+.modal-content h1{font-size:24px}
+.writer-wrap,.admin-panel,.info-page{padding:20px}
+.modal-content .article-body::before{font-size:40px}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.stat-number{font-size:22px}
+}
+</style>
 </head>
 <body>
-<div class="top-bar-red no-print"><div class="container">
-<div class="top-date" id="currentDate"></div>
-<div class="top-flags">🇧 🇬 🇩</div>
-<div class="top-icons">
-<a onclick="showPage('home');document.getElementById('searchBox').classList.add('show')"><i class="fas fa-search"></i></a>
-<a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-<a href="#"><i class="fab fa-youtube"></i></a>
-<a href="https://wa.me/8801905883389" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<a onclick="toggleTheme()"><i class="fas fa-moon"></i></a>
-</div></div></div>
 
-<header class="header no-print">
-<div class="logo-wrap" onclick="showPage('home')">
-<svg class="sun-svg" viewBox="0 0 200 120"><defs><linearGradient id="sunG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDB913"/><stop offset="1" stop-color="#F26522"/></linearGradient></defs>
-<g stroke="#F7941D" stroke-width="5" stroke-linecap="round"><line x1="100" y1="8" x2="100" y2="26"/><line x1="62" y1="16" x2="70" y2="32"/><line x1="138" y1="16" x2="130" y2="32"/><line x1="32" y1="38" x2="48" y2="48"/><line x1="168" y1="38" x2="152" y2="48"/><line x1="14" y1="66" x2="34" y2="68"/><line x1="186" y1="66" x2="166" y2="68"/></g>
-<path d="M55 88 A45 45 0 0 1 145 88 Z" fill="url(#sunG)"/><path d="M8 96 Q100 72 192 96" stroke="#111" stroke-width="7" fill="none" stroke-linecap="round"/></svg>
-<div class="logo-text"><span class="logo-daily">অনলাইন</span><span class="logo-main"><span class="black">সাহিত্য</span><span class="red"> বাতায়ন</span></span></div>
-</div>
-<div class="tagline">সাহিত্য, সংস্কৃতি ও সংবাদের আলোয় জাগ্রত মনন</div>
+<div id="page-main">
+<header>
+<div class="top-bar"><div class="container"><span id="current-date"></span><div>📧 sahityabatayan@gmail.com | 📞 ০১৭৭৩৯৫৭</div></div></div>
+<div class="main-header"><div class="container">
+<img src="logo.png" class="site-logo" alt="সাহিত্য বাতায়ন" onerror="this.style.display='none'" onload="document.getElementById('logo-text').style.display='none'">
+<div id="logo-text"><h1 class="site-title">সাহিত্য বাতায়ন</h1><p class="site-tagline">সাহিত্য • সংবাদ • সংস্কৃতি</p></div>
+</div></div>
+<nav class="main-nav"><div class="container"><ul class="nav-menu" id="nav-menu">
+<li><a href="#" class="active" data-category="all">প্রচ্ছদ</a></li>
+<li><a href="#" data-category="সংবাদ">সংবাদ</a></li>
+<li><a href="#" data-category="কবিতা,ছড়া">কবিতা-ছড়া</a></li>
+<li><a href="#" data-category="ছোটগল্প,অণুগল্প">গল্প</a></li>
+<li><a href="#" data-category="প্রবন্ধ,কলাম">প্রবন্ধ-কলাম</a></li>
+<li><a href="#" data-category="ফিচার">ফিচার</a></li>
+<li><a href="#" data-category="বুক রিভিউ,অনুবাদ">রিভিউ-অনুবাদ</a></li>
+<li><a href="#" data-category="ভ্রমণ">ভ্রমণ</a></li>
+<li><a href="#" data-category="সাক্ষাৎকার">সাক্ষাৎকার</a></li>
+<li><a href="#" data-category="তরুণ উদীয়মান কলম">তরুণ কলম</a></li>
+<li><a href="#" data-category="নারীদের কথা">নারীদের কথা</a></li>
+</ul><button class="mobile-menu-btn" onclick="document.getElementById('nav-menu').classList.toggle('active')">☰</button>
+<a href="#" onclick="showWriterDirectory();return false;" class="admin-link" style="color:#fff;padding:12px 14px;text-decoration:none">👥 লেখক তালিকা</a>
+<a href="#" onclick="showWriter();return false;" class="admin-link" style="color:#fff;padding:12px 14px;text-decoration:none">✍️ লিখুন</a>
+<a href="#" onclick="showWriterRegister();return false;" class="admin-link" style="color:#fff;padding:12px 14px;text-decoration:none">📝 নিবন্ধন</a>
+<a href="#" onclick="showAdminPanel();return false;" class="admin-link" style="color:#fff;padding:12px 14px;text-decoration:none">⚙️ অ্যাডমিন</a>
+</div></nav>
 </header>
 
-<nav class="nav-bar no-print"><div class="nav-container">
-<button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-<div class="nav-menu" id="navMenu">
-<a class="nav-item active" onclick="showPage('home');setActiveNav(this)"><i class="fas fa-home"></i> হোম</a>
-<a class="nav-item" onclick="filterCategory('সংবাদ');setActiveNav(this)">সংবাদ</a>
-<a class="nav-item" onclick="filterCategories('কবিতা,ছড়া');setActiveNav(this)">কবিতা-ছড়া</a>
-<a class="nav-item" onclick="filterCategories('ছোটগল্প,অণুগল্প');setActiveNav(this)">গল্প</a>
-<a class="nav-item" onclick="filterCategories('প্রবন্ধ,কলাম');setActiveNav(this)">প্রবন্ধ-কলাম</a>
-<a class="nav-item" onclick="filterCategory('ফিচার');setActiveNav(this)">ফিচার</a>
-<div class="nav-item" style="position:relative">শিল্প-সাহিত্য <i class="fas fa-caret-down"></i>
-<div class="dropdown">
-<a onclick="filterCategory('বুক রিভিউ')">বুক রিভিউ</a><a onclick="filterCategory('অনুবাদ')">অনুবাদ</a>
-<a onclick="filterCategory('ভ্রমণ')">ভ্রমণ</a><a onclick="filterCategory('সাক্ষাৎকার')">সাক্ষাৎকার</a>
-<a onclick="filterCategories('খেলাধুলা,সাংস্কৃতিক')">খেলা-সংস্কৃতি</a>
-<a onclick="filterCategory('তরুণ উদীয়মান কলম')">তরুণ কলম</a><a onclick="filterCategory('নারীদের কথা')">নারীদের কথা</a>
-</div></div>
-<a class="nav-item" onclick="showPage('classics');setActiveNav(this)">📚 ক্লাসিক</a>
-<a class="nav-item" onclick="showPage('gallery');setActiveNav(this)">🖼 গ্যালারি</a>
-<a class="nav-item" onclick="showPage('writers');setActiveNav(this)">লেখকবৃন্দ</a>
-<a class="nav-item" onclick="showPage('epaper');setActiveNav(this)">📰 ই-পেপার</a>
-<a class="nav-item" onclick="showPage('admin');setActiveNav(this)">⚙️ সম্পাদক</a>
-</div>
-<div class="nav-actions"><a class="admin-link" onclick="showPage(currentUser?'dashboard':'login')"><i class="fas fa-user-pen"></i> লেখক</a></div>
-</div></nav>
-
-<div class="breaking-bar no-print"><span class="breaking-label">ব্রেকিং নিউজ</span><div class="breaking-scroll"><span id="tickerText">📰 লোড হচ্ছে...</span></div></div>
-
-<div id="page-home" class="page active"><div class="container main-content">
-<div class="search-box" id="searchBox"><input id="searchInput" placeholder="লেখা, লেখক বা বিভাগ খুঁজুন... (Enter)" onkeyup="if(event.key==='Enter')doSearch()"><button onclick="doSearch()"><i class="fas fa-search"></i> খুঁজুন</button></div>
-<h2 class="section-title">সাম্প্রতিক প্রকাশনা</h2>
-<div class="articles-grid" id="articlesGrid"></div>
-<h2 class="section-title">📚 ক্লাসিক সাহিত্য ভাণ্ডার</h2>
-<div class="classic-grid" id="classicGrid"></div>
-<h2 class="section-title">📖 বই ড্রপ</h2>
-<div class="book-grid">
-<div class="book-card"><h4>📕 গীতাঞ্জলি</h4><div class="book-author">রবীন্দ্রনাথ ঠাকুর</div><p>নোবেল পুরস্কার বিজয়ী কাব্যগ্রন্থ।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=গীতাঞ্জলি" target="_blank">🛒 বইটি দেখুন</a></div>
-<div class="book-card"><h4>📕 অগ্নিবীণা</h4><div class="book-author">কাজী নজরুল ইসলাম</div><p>বিদ্রোহী কবির প্রথম কাব্যগ্রন্থ।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=অগ্নিবীণা" target="_blank">🛒 বইটি দেখুন</a></div>
-<div class="book-card"><h4>📕 পথের পাঁচালী</h4><div class="book-author">বিভূতিভূষণ বন্দ্যোপাধ্যায়</div><p>অপু-দুর্গার অমর গল্প।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=পথের+পাঁচালী" target="_blank">🛒 বইটি দেখুন</a></div>
-<div class="book-card"><h4>📕 শ্রীকান্ত</h4><div class="book-author">শরৎচন্দ্র চট্টোপাধ্যায়</div><p>বাংলা সাহিত্যের শ্রেষ্ঠ উপন্যাস।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=শ্রীকান্ত" target="_blank">🛒 বইটি দেখুন</a></div>
-<div class="book-card"><h4>📕 ফেলুদা সমগ্র</h4><div class="book-author">সত্যজিৎ রায়</div><p>বাংলার সেরা গোয়েন্দা সিরিজ।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=ফেলুদা+সমগ্র" target="_blank">🛒 বইটি দেখুন</a></div>
-<div class="book-card"><h4>📕 রূপসী বাংলা</h4><div class="book-author">জীবনানন্দ দাশ</div><p>বাংলার রূপের অনন্য কাব্য।</p><a class="buy-btn" href="https://www.rokomari.com/search?term=রূপসী+বাংলা" target="_blank">🛒 বইটি দেখুন</a></div>
-</div>
-<div class="newsletter no-print"><h3>📧 নিউজলেটার সাবস্ক্রাইব</h3><p>নতুন লেখা সরাসরি ইমেইলে পান</p>
-<div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="আপনার ইমেইল"><button onclick="subscribeNewsletter()">সাবস্ক্রাইব</button></div></div>
-<div class="calendar-section no-print"><div class="calendar-header" id="calendarHeader"></div><div class="calendar-grid" id="calendarGrid"></div></div>
-<h2 class="section-title">আমাদের লেখকবৃন্দ</h2>
-<div class="writers-grid" id="writersGrid"></div>
-</div></div>
-
-<div id="page-classics" class="page"><div class="container main-content"><h2 class="section-title">📚 ক্লাসিক সাহিত্য ভাণ্ডার</h2><div class="articles-grid" id="classicArticlesGrid"></div></div></div>
-<div id="page-gallery" class="page"><div class="container main-content"><h2 class="section-title">🖼 ছবি গ্যালারি</h2><div class="gallery-grid" id="galleryGrid"></div></div></div>
-
-<div id="page-article" class="page"><div class="container main-content">
-<div id="articleView"></div>
-<div class="audio-bar no-print" id="audioBar">
-<button class="btn-primary" onclick="speakArticle()"><i class="fas fa-volume-up"></i> লেখা শুনুন</button>
-<button class="btn-secondary" onclick="stopSpeak()"><i class="fas fa-stop"></i> থামান</button>
-<span style="color:var(--text-light);font-size:.9rem">বাংলা কণ্ঠে পড়ে শোনাবে</span>
-</div>
-<div class="font-controls no-print"><span>ফন্ট সাইজ:</span><button onclick="changeFontSize(-1)">−</button><button onclick="changeFontSize(1)">+</button><button onclick="changeFontSize(0)">রিসেট</button><span id="fontSizeDisplay" style="margin-left:10px">16px</span></div>
-<div class="action-box no-print"><h3><i class="fas fa-share-alt"></i> শেয়ার করুন</h3>
-<div class="share-buttons">
-<button class="share-btn facebook" onclick="shareOn('facebook')"><i class="fab fa-facebook-f"></i> Facebook</button>
-<button class="share-btn whatsapp" onclick="shareOn('whatsapp')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-<button class="share-btn twitter" onclick="shareOn('twitter')"><i class="fab fa-twitter"></i> Twitter</button>
-<button class="share-btn telegram" onclick="shareOn('telegram')"><i class="fab fa-telegram-plane"></i> Telegram</button>
-<button class="share-btn copy" onclick="copyLink()"><i class="fas fa-link"></i> কপি</button>
-<button class="share-btn email" onclick="shareOn('email')"><i class="fas fa-envelope"></i> Gmail</button>
-<button class="share-btn print" onclick="window.print()"><i class="fas fa-print"></i> প্রিন্ট</button>
-<button class="share-btn pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> PDF</button>
-</div></div>
-<div id="relatedArticles" class="no-print"></div>
-<div class="comments-section no-print"><h3>💬 মন্তব্য করুন</h3>
-<div class="comment-form"><input id="commentName" placeholder="আপনার নাম"><textarea id="commentText" rows="4" placeholder="আপনার মন্তব্য..."></textarea><button onclick="addComment()">মন্তব্য প্রকাশ করুন</button></div>
-<div id="commentsList"></div></div>
-</div></div>
-
-<div id="page-category" class="page"><div class="container main-content"><h2 class="section-title" id="categoryTitle"></h2><div class="articles-grid" id="categoryGrid"></div></div></div>
-<div id="page-writers" class="page"><div class="container main-content"><h2 class="section-title">আমাদের লেখকবৃন্দ</h2><div class="writers-grid" id="writersGridPage"></div></div></div>
-
-<div id="page-login" class="page"><div class="container main-content"><div class="login-box">
-<h2>✍️ লেখক লগইন</h2>
-<div id="login-form">
-<div class="form-group"><label>ইউজারনেম</label><input id="login-user"></div>
-<div class="form-group"><label>পাসওয়ার্ড</label><input type="password" id="login-pass"></div>
-<button class="btn-primary" onclick="writerLogin()">লগইন</button>
-<button class="btn-secondary" onclick="showRegister()">নতুন রেজিস্ট্রেশন</button>
-</div>
-<div id="register-form" style="display:none">
-<div class="form-group"><label>ইউজারনেম (ইংরেজি) *</label><input id="r-username"></div>
-<div class="form-group"><label>নাম (বাংলা) *</label><input id="r-name-bn"></div>
-<div class="form-group"><label>নাম (ইংরেজি) *</label><input id="r-name-en"></div>
-<div class="form-group"><label>ইমেইল *</label><input type="email" id="r-email"></div>
-<div class="form-group"><label>পাসওয়ার্ড *</label><input type="password" id="r-password"></div>
-<div class="form-group"><label>পরিচিতি</label><textarea id="r-bio" rows="2"></textarea></div>
-<button class="btn-primary" onclick="writerRegister()">যোগ দিন</button>
-<button class="btn-secondary" onclick="showLogin()">লগইনে ফিরুন</button>
-</div>
+<div class="stats-bar"><div class="container"><div class="stats-grid">
+<div class="stat-item"><span class="stat-number" id="stat-posts">০</span><span class="stat-label">মোট লেখা</span></div>
+<div class="stat-item"><span class="stat-number" id="stat-writers">০</span><span class="stat-label">লেখক</span></div>
+<div class="stat-item"><span class="stat-number" id="stat-visitors">০</span><span class="stat-label">মোট ভিজিটর</span></div>
+<div class="stat-item"><span class="stat-number" id="stat-today">০</span><span class="stat-label">আজকের ভিজিটর</span></div>
 </div></div></div>
 
-<div id="page-dashboard" class="page"><div class="container main-content"><div class="admin-panel">
-<h2>👤 লেখক ড্যাশবোর্ড — <span id="dash-name"></span> <button class="btn-danger" style="float:right" onclick="writerLogout()">লগআউট</button></h2>
-<h3 style="margin:20px 0 10px">নতুন লেখা জমা দিন (সম্পাদকের অনুমোদনের পর প্রকাশিত হবে)</h3>
-<div class="form-group"><label>শিরোনাম</label><input id="d-title"></div>
-<div class="form-group"><label>বিভাগ</label><select id="d-category"><option>কবিতা</option><option>ছড়া</option><option>ছোটগল্প</option><option>অণুগল্প</option><option>প্রবন্ধ</option><option>কলাম</option><option>ফিচার</option><option>সংবাদ</option><option>বুক রিভিউ</option><option>অনুবাদ</option><option>ভ্রমণ</option><option>সাক্ষাৎকার</option><option>খেলাধুলা</option><option>সাংস্কৃতিক</option><option>তরুণ উদীয়মান কলম</option><option>নারীদের কথা</option></select></div>
-<div class="form-group"><label>ছবি</label><input type="file" id="d-image" accept="image/*" onchange="compressImage(this,'d-imageData')"><input type="hidden" id="d-imageData"></div>
-<div class="form-group"><label>বিষয়বস্তু</label><textarea id="d-content" rows="8"></textarea></div>
-<button class="btn-primary" onclick="dashSubmit()">জমা দিন</button>
-<h3 style="margin:25px 0 10px">আমার লেখা</h3>
-<div id="dash-list"></div>
-</div></div></div>
+<div class="breaking-news"><div class="container"><span class="breaking-label">🔴 সাম্প্রতিক</span><div id="breaking-ticker" style="white-space:nowrap;overflow:hidden"></div></div></div>
 
-<div id="page-epaper" class="page"><div class="container main-content"><div class="epaper-wrap">
-<div class="epaper-head"><h2>📰 ই-পেপার</h2><div id="epaper-date" style="color:var(--text-light)"></div>
-<div><button class="btn-primary" onclick="printEpaper()">🖨️ প্রিন্ট / PDF</button><button class="btn-secondary" onclick="showPage('home')">← প্রচ্ছদ</button></div></div>
-<p style="color:var(--text-light);margin-bottom:15px">পাতা ধরে ধরে পড়ুন — নিচের বাটন থেকে পাতা বদলান।</p>
-<div class="epaper-grid" id="epaper-body"></div>
-<div class="epaper-nav"><button class="ep-page-btn" onclick="gotoEpaper(epaperPage-1)">‹</button><span id="epaper-pages" style="display:contents"></span><button class="ep-page-btn" onclick="gotoEpaper(epaperPage+1)">›</button></div>
-<div style="text-align:center;margin-top:10px;color:var(--text-light)" id="epaper-pageno"></div>
-</div></div></div>
+<main class="main-content"><div class="container">
+<section class="featured-section" id="featured-section" style="display:none">
+<div class="featured-main" id="featured-main"></div>
+<div class="featured-side" id="featured-side"></div>
+</section>
+<section><h2 class="section-title" id="section-title">সর্বশেষ প্রকাশিত</h2><div class="posts-grid" id="posts-grid"></div></section>
+<section id="writer-count-section" style="display:none"><h2 class="section-title">আমাদের লেখক</h2><p class="section-note">নিবন্ধিত লেখকবৃন্দ — প্রোফাইল দেখতে "প্রোফাইল" বাটনে ক্লিক করুন</p><div id="writer-list"></div></section>
+<section><h2 class="section-title">📚 বই ড্রপ</h2>
+<div class="posts-grid">
+<article class="post-card"><div class="post-card-body"><span class="category-tag">বুক রিভিউ</span><h3>পথের পাঁচালী</h3><p class="excerpt">বিভূতিভূষণ বন্দ্যোপাধ্যায়ের অমর সৃষ্টি।</p><a class="buy-btn" target="_blank" href="https://www.rokomari.com/search?term=পথের+পাঁচালী">🛒 বইটি দেখুন</a></div></article>
+<article class="post-card"><div class="post-card-body"><span class="category-tag">বুক রিভিউ</span><h3>ফেলুদা সমগ্র</h3><p class="excerpt">সত্যজিৎ রায়ের গোয়েন্দা সমগ্র।</p><a class="buy-btn" target="_blank" href="https://www.rokomari.com/search?term=ফেলুদা">🛒 বইটি দেখুন</a></div></article>
+</div></section>
+</div></main>
 
-<div id="page-about" class="page"><div class="container"><div class="info-page"><h2>আমাদের সম্পর্কে</h2><p><strong>সাহিত্য বাতায়ন</strong> একটি অনলাইন সাহিত্য, সংবাদ ও সংস্কৃতি বিষয়ক পত্রিকা।</p><h3>🎯 লক্ষ্য</h3><ul><li>লেখকদের উন্মুক্ত মঞ্চ</li><li>বাংলা সাহিত্যের চর্চা বৃদ্ধি</li><li>তরুণ প্রজন্মকে উৎসাহ</li></ul><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
-<div id="page-privacy" class="page"><div class="container"><div class="info-page"><h2>গোপনীয়তা নীতি</h2><p>আমরা আপনার কোনো তথ্য তৃতীয় পক্ষের কাছে বিক্রি করি না।</p><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
-<div id="page-contact" class="page"><div class="container"><div class="info-page"><h2>যোগাযোগ</h2><p>📧 sahityabatayan@gmail.com</p><p>📞 01905883389 (হোয়াটসঅ্যাপ)</p><p>📘 <a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank">Facebook পেইজ</a></p><button class="btn-secondary" onclick="showPage('home')">← ফিরে যান</button></div></div></div>
-
-<div id="page-admin" class="page"><div class="container main-content"><div class="admin-panel">
-<h2>⚙️ সম্পাদক প্যানেল</h2>
-<div style="margin-bottom:20px"><button class="btn-primary" onclick="showAdminTab('submit')">নতুন লেখা</button><button class="btn-info" onclick="showAdminTab('pending')">অনুমোদন</button><button class="btn-success" onclick="showAdminTab('published')">প্রকাশিত</button><button class="btn-warning" onclick="showAdminTab('stats')">📊 পরিসংখ্যান</button></div>
-<div id="tab-submit">
-<h3>নতুন আর্টিকেল জমা দিন</h3>
-<div class="form-group"><label>শিরোনাম</label><input id="aTitle"></div>
-<div class="form-group"><label>লেখক</label><input id="aAuthor"></div>
-<div class="form-group"><label>ক্যাটাগরি</label><select id="aCategory"><option>সংবাদ</option><option>কবিতা</option><option>ছড়া</option><option>ছোটগল্প</option><option>অণুগল্প</option><option>প্রবন্ধ</option><option>কলাম</option><option>ফিচার</option><option>বুক রিভিউ</option><option>অনুবাদ</option><option>ভ্রমণ</option><option>সাক্ষাৎকার</option><option>খেলাধুলা</option><option>সাংস্কৃতিক</option><option>তরুণ উদীয়মান কলম</option><option>নারীদের কথা</option></select></div>
-<div class="form-group"><label>ছবি</label><input type="file" id="aImageFile" accept="image/*" onchange="compressImage(this,'aImage')"><input type="hidden" id="aImage"></div>
-<div class="form-group"><label>বিষয়বস্তু</label><textarea id="aContent" rows="10"></textarea></div>
-<div class="form-group"><label>🔑 সম্পাদক কোড (দ্রুত প্রকাশের জন্য)</label><input type="password" id="aEditorCode" placeholder="সম্পাদক হলে কোড দিন"></div>
-<button class="btn-primary" onclick="submitArticle()">জমা দিন</button>
-</div>
-<div id="tab-pending" style="display:none"><h3>অনুমোদনের অপেক্ষায় (শিট + এই ব্রাউজার)</h3><div id="pendingArticlesList"></div></div>
-<div id="tab-published" style="display:none"><h3>প্রকাশিত আর্টিকেল</h3><div id="publishedArticlesList"></div></div>
-<div id="tab-stats" style="display:none"><h3>📊 পরিসংখ্যান</h3><div id="statsContent"></div></div>
-</div></div></div>
-
-<footer class="footer no-print"><div class="container">
+<footer class="site-footer"><div class="container">
 <div class="footer-content">
-<div class="footer-section"><h3>সাহিত্য বাতায়ন</h3><p>সাহিত্য, সংস্কৃতি ও সংবাদের আলোয় জাগ্রত মনন।</p>
-<div class="social-links"><a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="https://wa.me/8801905883389" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
-<a href="https://www.facebook.com/share/1AbDsVtARW/" target="_blank" class="fb-follow">📘 পেইজ ফলো করুন</a></div>
-<div class="footer-section"><h3>দ্রুত লিংক</h3><ul><li><a onclick="showPage('about')">আমাদের সম্পর্কে</a></li><li><a onclick="showPage('privacy')">গোপনীয়তা নীতি</a></li><li><a onclick="showPage('contact')">যোগাযোগ</a></li><li><a onclick="showPage('gallery')">ছবি গ্যালারি</a></li><li><a onclick="showPage('admin')">এডমিন প্যানেল</a></li></ul></div>
-<div class="footer-section"><h3>যোগাযোগ</h3><p>📞 01905883389</p><p>📧 sahityabatayan@gmail.com</p><p>📍 বাংলাদেশ</p></div>
+<div><h3>সাহিত্য বাতায়ন</h3><p>সাহিত্য, সংবাদ ও সংস্কৃতি বিষয়ক অনলাইন পত্রিকা।</p></div>
+<div><h3>যোগাযোগ</h3><p>📍 খিলগাঁও, ঢাকা-১২১৯</p><p>📞 ০১৭৭৪৩৯২৫৭</p><p>📧 sahityabatayan@gmail.com</p></div>
+<div><h3>দ্রুত লিংক</h3>
+<p><a href="#" onclick="showWriterDirectory();return false;">লেখক তালিকা ও প্রোফাইল</a></p>
+<p><a href="#" onclick="showAbout();return false;">আমাদের সম্পর্কে</a></p>
+<p><a href="#" onclick="showPrivacy();return false;">গোপনীয়তা নীতি</a></p>
+<p><a href="#" onclick="showContact();return false;">যোগাযোগ</a></p>
+<p><a href="#" onclick="showAdminPanel();return false;">অ্যাডমিন প্যানেল</a></p>
 </div>
-<div class="footer-bottom"><p>সম্পাদক ও প্রকাশক: মুহিতুল ইসলাম মুন্না</p><p>© ২০২৬ সাহিত্য বাতায়ন - সর্বস্বত্ব সংরক্ষিত</p></div>
+</div>
+<div class="footer-bottom"><p>সম্পাদক ও প্রকাশক: মুহিতুল ইসলাম মুন্না</p><p>স্বত্ব © ২০২৬ সাহিত্য বাতায়ন। সর্বস্বত্ব সংরক্ষিত।</p></div>
 </div></footer>
+</div>
 
-<a class="wa-float no-print" target="_blank" href="https://wa.me/8801905883389?text=সাহিত্য%20বাতায়ন%20-%20লেখা%20পাঠাতে%20চাই"><i class="fab fa-whatsapp"></i></a>
-<div class="lightbox" id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
-<button class="back-to-top no-print" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
-<div id="print-sheet"></div>
+<!-- লেখা জমা -->
+<div id="page-writer" style="display:none"><div class="container"><div class="writer-wrap">
+<h2>✍️ নতুন লেখা যোগ করুন</h2>
+<p class="writer-note">লেখা জমা দিলে সম্পাদকের অনুমোদনের পর প্রকাশিত হবে। অনুমোদন ছাড়া কোনো লেখা প্রকাশ হয় না।</p>
+<form id="writer-form">
+<div class="form-group"><label>শিরোনাম *</label><input id="w-title" required></div>
+<div class="form-group"><label>বিভাগ *</label><select id="w-category"><option>কবিতা</option><option>ছড়া</option><option>ছোটগল্প</option><option>অণুগল্প</option><option>প্রবন্ধ</option><option>কলাম</option><option>ফিচার</option><option>সংবাদ</option><option>বুক রিভিউ</option><option>অনুবাদ</option><option>ভ্রমণ</option><option>সাক্ষাৎকার</option><option>খেলাধুলা</option><option>সাংস্কৃতিক</option><option>তরুণ উদীয়মান কলম</option><option>নারীদের কথা</option></select></div>
+<div class="form-group"><label>লেখকের নাম *</label><input id="w-author" required></div>
+<div class="form-group"><label>সারসংক্ষেপ (১-২ লাইন) *</label><textarea id="w-excerpt" rows="2" required></textarea></div>
+<div class="form-group"><label>মূল লেখা *</label><textarea id="w-content" rows="12" required></textarea></div>
+<div class="form-group"><label>📷 ছবি আপলোড (ঐচ্ছিক)</label><input type="file" id="w-image" accept="image/*"><img id="w-preview" class="image-preview"></div>
+<div class="form-group"><label><input type="checkbox" id="w-featured"> ফিচার্ড</label></div>
+<div class="form-group"><label>🔑 সম্পাদক কোড</label><input id="w-code" type="password" placeholder="শুধু সম্পাদক জানেন"></div>
+<div class="form-actions"><button type="submit" class="btn-primary" id="w-submit">জমা দিন</button><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div>
+</form>
+</div></div></div>
 
-<script src="script.js"></script>
+<!-- লেখক নিবন্ধন -->
+<div id="page-writer-register" style="display:none"><div class="container"><div class="writer-wrap">
+<h2>📝 লেখক নিবন্ধন</h2>
+<p class="writer-note">নিবন্ধিত লেখকদের আলাদা প্রোফাইল পেজ থাকবে</p>
+<form id="writer-register-form">
+<div class="form-group"><label>লগইন নাম (ইংরেজি) *</label><input id="wr-username" required></div>
+<div class="form-group"><label>নাম (বাংলায়) *</label>
+<div class="radio-group"><label><input type="radio" name="name-type" value="obhro" checked> অভ্র</label><label><input type="radio" name="name-type" value="english"> ইংরেজি</label><label><input type="radio" name="name-type" value="unijoy"> ইউনিজয়</label></div>
+<input id="wr-name-bn" required></div>
+<div class="form-group"><label>নাম (ইংরেজিতে) *</label><input id="wr-name-en" required></div>
+<div class="form-group"><label>ইমেইল *</label><input type="email" id="wr-email" required></div>
+<div class="form-group"><label>পাসওয়ার্ড *</label><input type="password" id="wr-password" required minlength="6"></div>
+<div class="form-group"><label>পুনরায় পাসওয়ার্ড *</label><input type="password" id="wr-password-confirm" required></div>
+<div class="form-group"><label>ফোন</label><input id="wr-phone"></div>
+<div class="form-group"><label>জন্ম তারিখ</label><input id="wr-birth" placeholder="যেমন: ১০ এপ্রিল"></div>
+<div class="form-group"><label>জন্মস্থান</label><input id="wr-birthplace"></div>
+<div class="form-group"><label>বর্তমান ঠিকানা</label><input id="wr-address"></div>
+<div class="form-group"><label>পেশা</label><input id="wr-profession"></div>
+<div class="form-group"><label>শিক্ষাগত যোগ্যতা</label><input id="wr-education"></div>
+<div class="form-group"><label>Facebook লিংক</label><input id="wr-facebook"></div>
+<div class="form-group"><label>সংক্ষিপ্ত জীবনী *</label><textarea id="wr-bio" rows="3" required></textarea></div>
+<div class="form-group"><div class="agreement-box">সদস্য হিসেবে যোগ দেয়ার মানে হচ্ছে আপনি সাহিত্য বাতায়নের সমস্ত নিয়মাবলী মেনে চলবেন। আপনার লেখা সম্পাদকের অনুমোদনের পর প্রকাশিত হবে।</div>
+<label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="wr-agree" required> আমি নিয়মাবলী মেনে চলতে রাজি</label></div>
+<div class="form-actions"><button type="submit" class="btn-primary" id="wr-submit">যোগ দিন</button><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div>
+</form>
+</div></div></div>
+
+<!-- লেখক তালিকা -->
+<div id="page-writer-directory" style="display:none"><div class="container"><div class="writer-wrap">
+<h2>👥 লেখক তালিকা</h2>
+<p class="writer-note">প্রোফাইল দেখতে "প্রোফাইল দেখুন" বাটনে ক্লিক করুন</p>
+<div id="writer-directory-list"></div>
+<div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← প্রচ্ছদে ফিরুন</button></div>
+</div></div></div>
+
+<!-- লেখক প্রোফাইল -->
+<div id="page-writer-profile" style="display:none"><div class="container"><div class="writer-wrap">
+<div style="text-align:center;margin-bottom:25px;padding-bottom:20px;border-bottom:3px solid var(--primary)">
+<h1 id="wp-name" style="color:var(--primary);font-size:32px"></h1>
+<p id="wp-username" style="color:var(--text-light)"></p>
+</div>
+<table class="profile-table">
+<tr><td>জন্ম তারিখ</td><td id="wp-birth"></td></tr>
+<tr><td>জন্মস্থান</td><td id="wp-birthplace"></td></tr>
+<tr><td>বর্তমান নিবাস</td><td id="wp-address"></td></tr>
+<tr><td>পেশা</td><td id="wp-profession"></td></tr>
+<tr><td>শিক্ষাগত যোগ্যতা</td><td id="wp-education"></td></tr>
+<tr><td>ফোন নাম্বার</td><td id="wp-phone"></td></tr>
+<tr><td>সামাজিক মাধ্যম</td><td id="wp-facebook"></td></tr>
+<tr><td>যোগদান</td><td id="wp-join"></td></tr>
+<tr><td>মোট পয়েন্ট</td><td id="wp-points"></td></tr>
+</table>
+<div id="wp-bio" style="padding:20px;background:var(--bg-light);border-radius:8px;margin-bottom:25px"></div>
+<h2 style="color:var(--primary);border-bottom:3px solid var(--primary);padding-bottom:10px;margin-bottom:20px">প্রকাশিত লেখাসমূহ</h2>
+<div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+<input id="wp-search" placeholder="লেখা খুঁজুন..." style="flex:1;padding:10px;border:1px solid var(--border);border-radius:5px" oninput="renderWriterPosts(filterWriterPosts())">
+<button class="small-btn" onclick="sortWriterPosts('date')">তারিখ অনুযায়ী</button>
+<button class="small-btn" onclick="sortWriterPosts('title')">শিরোনাম অনুযায়ী</button>
+</div>
+<p id="wp-count" style="margin-bottom:15px;color:var(--text-light)"></p>
+<div id="wp-posts"></div>
+<div class="form-actions"><button type="button" class="btn-secondary" onclick="showWriterDirectory()">← লেখক তালিকা</button><button type="button" class="btn-secondary" onclick="showMain()">প্রচ্ছদ</button></div>
+</div></div></div>
+
+<!-- অ্যাডমিন -->
+<div id="page-admin" style="display:none"><div class="container"><div class="admin-panel">
+<h2>⚙️ অ্যাডমিন প্যানেল</h2>
+<div class="admin-tabs">
+<button class="admin-tab active" onclick="switchAdminTab('pending',this)">অনুমোদনের অপেক্ষায়</button>
+<button class="admin-tab" onclick="switchAdminTab('comments',this)">মন্তব্য</button>
+<button class="admin-tab" onclick="switchAdminTab('writers',this)">লেখক</button>
+<button class="admin-tab" onclick="switchAdminTab('stats',this)">পরিসংখ্যান</button>
+</div>
+<div id="admin-pending" class="admin-content active"><div id="pending-list"></div></div>
+<div id="admin-comments" class="admin-content"><div id="comments-list"></div></div>
+<div id="admin-writers" class="admin-content"><div id="writers-list"></div></div>
+<div id="admin-stats" class="admin-content"><div id="admin-stats-content"></div></div>
+</div></div></div>
+
+<!-- তথ্য পাতা -->
+<div id="page-about" style="display:none"><div class="container"><div class="info-page"><h2>আমাদের সম্পর্কে</h2><p>সাহিত্য বাতায়ন একটি অনলাইন সাহিত্য, সংবাদ ও সংস্কৃতি বিষয়ক পত্রিকা। প্রতিটি লেখা সম্পাদকের অনুমোদনের পর প্রকাশিত হয়।</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
+<div id="page-privacy" style="display:none"><div class="container"><div class="info-page"><h2>গোপনীয়তা নীতি</h2><p>আমরা আপনার তথ্য তৃতীয় পক্ষের কাছে বিক্রি করি না। লেখকদের তথ্য শুধু প্রোফাইল প্রদর্শনের জন্য ব্যবহৃত হয়।</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
+<div id="page-contact" style="display:none"><div class="container"><div class="info-page"><h2>যোগাযোগ</h2><p>📧 sahityabatayan@gmail.com<br>📞 ০১৭৭৩৯২৫৭<br> খিলগাঁও, ঢাকা-১২১৯</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
+
+<div class="article-modal" id="article-modal"><div class="modal-content">
+<button class="modal-close" onclick="closeModal()">×</button>
+<div id="modal-body"></div>
+</div></div>
+
+<script>
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbxuCrL62mocLAYLn7tIMzjj8koUfE98ZOStOv-EDDNylUxsNjBm7_Brvu5fHekqgTCU/exec';
+const EDITOR_CODE='SB2026';
+let ALL_POSTS=[],ALL_WRITERS=[],WP_POSTS=[],currentPostId='',imageData='';
+
+function toBn(n){const b=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];return String(n).split('').map(c=>/[0-9]/.test(c)?b[c]:c).join('');}
+function bnToEn(s){const b=['০','১','২','৩','৪','৫','৬','৭','৮','৯'];return String(s).split('').map(c=>{const i=b.indexOf(c);return i>-1?i:c;}).join('');}
+function escapeHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function updateDate(){const d=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];const m=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];const now=new Date();document.getElementById('current-date').textContent=d[now.getDay()]+', '+toBn(now.getDate())+' '+m[now.getMonth()]+' '+toBn(now.getFullYear());}
+function banglaToday(){const m=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];const now=new Date();return toBn(now.getDate())+' '+m[now.getMonth()]+' '+toBn(now.getFullYear());}
+function notify(msg){const n=document.createElement('div');n.className='notification';n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),4000);}
+function linkify(s){return String(s).replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>').replace(/\n/g,'<br>');}
+function metaText(p){return '✍️ <a href="#" onclick="showWriterProfileByName(\''+String(p.author).replace(/'/g,"\\'")+'\');return false;">'+p.author+'</a>'+(p.date?' | 📅 '+p.date:'');}
+
+function trackVisitor(){
+const today=new Date().toDateString();
+let v=parseInt(localStorage.getItem('sb_visitors')||'0');
+let last=localStorage.getItem('sb_last_visit');
+let t=parseInt(localStorage.getItem('sb_today_visitors')||'0');
+if(last!==today){v++;t=1;localStorage.setItem('sb_last_visit',today);}else{t++;}
+localStorage.setItem('sb_visitors',v);localStorage.setItem('sb_today_visitors',t);
+}
+
+document.getElementById('w-image').addEventListener('change',function(e){
+const file=e.target.files[0];if(!file)return;
+if(file.size>2*1024*1024){alert('⚠️ ২MB এর কম ছবি ব্যবহার করুন।');e.target.value='';return;}
+const reader=new FileReader();
+reader.onload=function(ev){const img=new Image();img.onload=function(){
+const canvas=document.createElement('canvas');const maxW=800;let w=img.width,h=img.height;
+if(w>maxW){h=h*maxW/w;w=maxW;}canvas.width=w;canvas.height=h;
+const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);ctx.drawImage(img,0,0,w,h);
+imageData=canvas.toDataURL('image/jpeg',0.7);
+const prev=document.getElementById('w-preview');prev.src=imageData;prev.style.display='block';};img.src=ev.target.result;};
+reader.readAsDataURL(file);
+});
+
+async function fetchData(action,params={}){
+let url=SCRIPT_URL+'?action='+action;
+if(params.postId)url+='&postId='+encodeURIComponent(params.postId);
+if(params.writerId)url+='&writerId='+encodeURIComponent(params.writerId);
+if(params.writerName)url+='&writerName='+encodeURIComponent(params.writerName);
+try{const res=await fetch(url);return await res.json();}catch(e){return [];}
+}
+async function submitData(data){
+try{await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(data)});return true;}catch(e){return false;}
+}
+
+async function initMain(){
+trackVisitor();updateDate();
+document.getElementById('stat-visitors').textContent=toBn(localStorage.getItem('sb_visitors')||'0');
+document.getElementById('stat-today').textContent=toBn(localStorage.getItem('sb_today_visitors')||'0');
+document.getElementById('breaking-ticker').textContent='📰 লোড হচ্ছে...';
+let posts=await fetchData('getPosts');
+posts=Array.isArray(posts)?posts:[];
+posts=posts.filter(p=>p.status==='approved'); // 🔒 দ্বিতীয় সুরক্ষা
+ALL_POSTS=posts;
+const stats=await fetchData('getStats')||{};
+const writers=await fetchData('getWriters');
+ALL_WRITERS=Array.isArray(writers)?writers:[];
+document.getElementById('stat-posts').textContent=toBn(ALL_POSTS.length);
+document.getElementById('stat-writers').textContent=toBn(ALL_WRITERS.length);
+document.getElementById('stat-visitors').textContent=toBn(stats.visitors||localStorage.getItem('sb_visitors')||'0');
+document.getElementById('breaking-ticker').textContent=ALL_POSTS.slice(0,3).map(p=>'📰 '+p.title).join(' • ')||'📰 নতুন লেখা শীঘ্রই আসছে';
+
+const featured=ALL_POSTS.filter(p=>String(p.featured||'').toLowerCase()==='yes'||String(p.featured||'').toLowerCase()==='true');
+const featSec=document.getElementById('featured-section');
+if(featured.length){featSec.style.display='grid';const main=featured[0];
+document.getElementById('featured-main').innerHTML='<img src="'+(main.image||'https://placehold.co/800x400/c0392b/ffffff?text=Sahitya+Batayan')+'" style="width:100%;height:100%;object-fit:cover" onerror="this.src=\'https://placehold.co/800x400/c0392b/ffffff?text=Sahitya+Batayan\'"><div class="featured-overlay"><span class="category-tag">'+main.category+'</span><h2>'+main.title+'</h2><div class="meta">✍️ '+main.author+'</div></div>';
+document.getElementById('featured-main').onclick=function(){openArticle(main.id);};
+document.getElementById('featured-side').innerHTML=featured.slice(1,3).map(p=>'<div class="featured-item" onclick="openArticle(\''+p.id+'\')"><img src="'+(p.image||'https://placehold.co/600x120/c0392b/ffffff?text=SB')+'" onerror="this.src=\'https://placehold.co/600x120/c0392b/ffffff?text=SB\'"><div class="featured-item-body"><span class="category-tag">'+p.category+'</span><h4 style="margin:8px 0;font-size:16px">'+p.title+'</h4></div></div>').join('');
+}else{featSec.style.display='none';}
+
+renderGrid(ALL_POSTS);
+
+if(ALL_WRITERS.length){
+document.getElementById('writer-count-section').style.display='block';
+document.getElementById('writer-list').innerHTML=ALL_WRITERS.slice(0,6).map(writerCardHTML).join('');
+}
+
+document.querySelectorAll('#nav-menu a[data-category]').forEach(function(link){
+link.onclick=function(e){e.preventDefault();
+document.querySelectorAll('#nav-menu a').forEach(a=>a.classList.remove('active'));link.classList.add('active');
+const cat=link.dataset.category;
+if(cat==='all'){document.getElementById('section-title').textContent='সর্বশেষ প্রকাশিত';renderGrid(ALL_POSTS);}
+else{const cats=cat.split(',');document.getElementById('section-title').textContent=link.textContent+' বিভাগ';renderGrid(ALL_POSTS.filter(p=>cats.indexOf(p.category)>-1));}};
+});
+const pid=new URLSearchParams(location.search).get('post');
+if(pid)openArticle(pid);
+}
+
+function renderGrid(posts){
+const grid=document.getElementById('posts-grid');
+if(!posts.length){grid.innerHTML='<p style="grid-column:1/-1;text-align:center;padding:40px">এই বিভাগে এখনো কোনো লেখা প্রকাশিত হয়নি।</p>';return;}
+grid.innerHTML=posts.map(p=>`
+<article class="post-card" onclick="if(!event.target.closest('.share-btn'))openArticle('${p.id}')">
+<img src="${p.image||'https://placehold.co/600x350/c0392b/ffffff?text=Sahitya+Batayan'}" onerror="this.src='https://placehold.co/600x350/c0392b/ffffff?text=Sahitya+Batayan'">
+<div class="post-card-body"><span class="category-tag">${p.category}</span><h3>${p.title}</h3><p class="excerpt">${p.excerpt}</p>
+<div class="meta">✍️ ${p.author} | 📅 ${p.date}</div>
+<div class="share-buttons" onclick="event.stopPropagation()">
+<button class="share-btn share-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.origin+location.pathname+'?post=${p.id}'))">📘</button>
+<button class="share-btn share-whatsapp" onclick="window.open('https://wa.me/?text='+encodeURIComponent(p.title+' '+location.origin+location.pathname+'?post=${p.id}'))">📱</button>
+<button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'?post=${p.id}');alert('✅ কপি হয়েছে')">🔗</button>
+<button class="share-btn share-pdf" onclick="openArticle('${p.id}');setTimeout(downloadPDF,600)">📄</button>
+</div></div></article>`).join('');
+}
+
+function openArticle(id){
+const post=ALL_POSTS.find(p=>p.id===id);if(!post)return;
+currentPostId=id;
+document.getElementById('modal-body').innerHTML=`
+<div class="modal-header-brand"><div><div class="brand-text">সাহিত্য বাতায়ন</div><span class="brand-sub">A Literary Portal</span></div></div>
+<h1>${post.title}</h1>
+<div class="meta">${metaText(post)} | 📁 ${post.category}</div>
+${post.image?`<img class="article-image" src="${post.image}" onerror="this.style.display='none'">`:''}
+<div class="article-body">${linkify(post.content)}</div>
+<div class="modal-footer-brand">© ২০৬ <strong>সাহিত্য বাতায়ন</strong></div>
+<div class="share-buttons" style="margin-top:20px">
+<button class="share-btn share-facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.origin+location.pathname+'?post=${post.id}'))">📘 Facebook</button>
+<button class="share-btn share-whatsapp" onclick="window.open('https://wa.me/?text='+encodeURIComponent(post.title+' '+location.origin+location.pathname+'?post=${post.id}'))">📱 WhatsApp</button>
+<button class="share-btn share-copy" onclick="navigator.clipboard.writeText(location.origin+location.pathname+'?post=${post.id}');alert('✅ কপি হয়েছে')">🔗 কপি</button>
+<button class="share-btn share-pdf" onclick="downloadPDF()">📄 PDF</button>
+</div>
+<div class="comments-section"><h3>💬 মন্তব্য করুন</h3>
+<div class="comment-form"><input id="comment-author" placeholder="আপনার নাম"><textarea id="comment-text" placeholder="আপনার মন্তব্য লিখুন..."></textarea>
+<button class="comment-submit" onclick="handleCommentSubmit()">মন্তব্য প্রকাশ করুন</button></div>
+<div id="comments-container" class="comment-list"><p>লোড হচ্ছে...</p></div></div>`;
+document.getElementById('article-modal').classList.add('active');
+document.body.style.overflow='hidden';
+loadComments(id);
+}
+
+async function loadComments(postId){
+const comments=await fetchData('getComments',{postId});
+const list=Array.isArray(comments)?comments:[];
+const container=document.getElementById('comments-container');
+if(!list.length){container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:15px">এখনো কোনো মন্তব্য নেই। প্রথম মন্তব্য করুন!</p>';return;}
+const parents=list.filter(c=>!c.reply_to);
+const replies=list.filter(c=>c.reply_to);
+let html='';
+parents.forEach(c=>{
+html+=commentHTML(c);
+const rs=replies.filter(r=>r.reply_to===c.id);
+if(rs.length){html+='<div class="reply-wrap">'+rs.map(commentHTML).join('')+'</div>';}
+});
+container.innerHTML=html;
+}
+
+function commentHTML(c){
+return `<div class="comment-item">
+<div class="comment-header"><span class="comment-author">${escapeHtml(c.author)}</span><span class="comment-date">${c.date}</span></div>
+<div class="comment-text">${escapeHtml(c.text)}</div>
+<button class="reply-toggle" onclick="toggleReply('${c.id}')">↩️ রিপ্লাই</button>
+<div id="reply-box-${c.id}" class="reply-box" style="display:none;margin-top:10px">
+<input id="reply-author-${c.id}" placeholder="আপনার নাম">
+<textarea id="reply-text-${c.id}" placeholder="আপনার রিপ্লাই..."></textarea>
+<button class="comment-submit" onclick="submitReply('${c.id}')">রিপ্লাই পাঠান</button>
+</div></div>`;
+}
+function toggleReply(id){const el=document.getElementById('reply-box-'+id);el.style.display=el.style.display==='none'?'block':'none';}
+async function submitReply(parentId){
+const author=document.getElementById('reply-author-'+parentId).value.trim();
+const text=document.getElementById('reply-text-'+parentId).value.trim();
+if(!author||!text){alert('নাম ও রিপ্লাই লিখুন');return;}
+const ok=await submitData({action:'submitComment',postId:currentPostId,author,text,date:banglaToday(),replyTo:parentId});
+if(ok){notify('✅ রিপ্লাই প্রকাশিত!');loadComments(currentPostId);}
+}
+async function handleCommentSubmit(){
+const author=document.getElementById('comment-author').value.trim();
+const text=document.getElementById('comment-text').value.trim();
+if(!author||!text){alert('নাম ও মন্তব্য লিখুন');return;}
+const ok=await submitData({action:'submitComment',postId:currentPostId,author,text,date:banglaToday()});
+if(ok){notify('✅ মন্তব্য প্রকাশিত!');document.getElementById('comment-author').value='';document.getElementById('comment-text').value='';loadComments(currentPostId);}
+}
+
+async function downloadPDF(){
+const post=ALL_POSTS.find(p=>p.id===currentPostId);if(!post)return;
+const pdfHTML=`<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+body{font-family:'Noto Sans Bengali',sans-serif;line-height:2;color:#2c3e50;padding:40px;max-width:800px;margin:0 auto}
+.header{background:linear-gradient(135deg,#c0392b,#922b21);color:#fff;padding:30px;text-align:center;border-radius:8px;margin-bottom:30px}
+.header h1{margin:0;font-size:30px;font-weight:900}
+.cat{display:inline-block;background:#c0392b;color:#fff;padding:6px 15px;border-radius:4px;margin-bottom:20px}
+.title{font-size:30px;font-weight:700;margin:20px 0}
+.meta{color:#7f8c8d;border-bottom:3px solid #c0392b;padding-bottom:15px;margin-bottom:25px}
+img{width:100%;border-radius:8px;margin:20px 0}
+.content{font-size:17px;text-align:justify}
+.footer{margin-top:50px;border-top:3px solid #c0392b;padding-top:20px;text-align:center;color:#7f8c8d;font-size:13px}
+.btn{position:fixed;top:15px;right:15px;background:#c0392b;color:#fff;border:none;padding:12px 25px;border-radius:8px;font-size:16px;cursor:pointer;font-family:inherit}
+@media print{.btn{display:none}}
+</style></head><body>
+<button class="btn" onclick="doPrint()">🖨️ PDF সেভ করুন</button>
+<div class="header"><h1>সাহিত্য বাতায়ন</h1><p>sahitya-batayan.netlify.app</p></div>
+<div><span class="cat">${post.category}</span></div>
+<h1 class="title">${post.title}</h1>
+<div class="meta">✍️ ${post.author} | 📅 ${post.date}</div>
+${post.image?`<img src="${post.image}">`:''}
+<div class="content">${post.content.split('\n').map(p=>p.trim()?`<p>${p}</p>`:'').join('')}</div>
+<div class="footer">© ২০৬ সাহিত্য বাতায়ন | সম্পাদক: মুহিতুল ইসলাম মুন্না</div>
+<script>
+function doPrint(){if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){window.print();});}else{window.print();}}
+window.onload=function(){setTimeout(function(){doPrint();},1500);};
+<\/script></body></html>`;
+const blob=new Blob([pdfHTML],{type:'text/html;charset=utf-8'});
+const w=window.open(URL.createObjectURL(blob),'_blank');
+if(!w){alert('পপআপ অনুমতি দিন');return;}
+notify('✅ PDF উইন্ডো খুলেছে - Save as PDF করুন');
+}
+
+function switchAdminTab(tab,btn){
+document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.admin-content').forEach(c=>c.classList.remove('active'));
+btn.classList.add('active');document.getElementById('admin-'+tab).classList.add('active');
+if(tab==='pending')loadPending();
+if(tab==='comments')loadAllComments();
+if(tab==='writers')loadAdminWriters();
+if(tab==='stats')loadAdminStats();
+}
+async function loadPending(){
+const pending=await fetchData('getPending');
+const list=document.getElementById('pending-list');
+if(!Array.isArray(pending)||!pending.length){list.innerHTML='<p style="text-align:center;padding:30px;color:var(--text-light)">কোনো লেখা অনুমোদনের অপেক্ষায় নেই ✅</p>';return;}
+list.innerHTML=pending.map(p=>`<div class="pending-item"><h4>${p.title}</h4>
+<div style="font-size:13px;color:var(--text-light);margin:5px 0">✍️ ${p.author} | 📁 ${p.category} | 📅 ${p.date}</div>
+<p style="font-size:14px;margin:10px 0">${p.excerpt||''}</p>
+<div class="pending-actions"><button class="approve-btn" onclick="approveItem('approvePost','${p.id}')">✅ অনুমোদন</button>
+<button class="reject-btn" onclick="approveItem('rejectPost','${p.id}')">❌ রিজেক্ট</button></div></div>`).join('');
+}
+async function approveItem(action,id){
+if(!confirm('নিশ্চিত?'))return;
+const ok=await submitData({action,postId:id});
+if(ok){notify('✅ আপডেট হয়েছে');loadPending();initMain();}
+}
+async function loadAllComments(){
+const comments=await fetchData('getAllComments');
+const list=document.getElementById('comments-list');
+if(!Array.isArray(comments)||!comments.length){list.innerHTML='<p style="text-align:center;padding:30px;color:var(--text-light)">কোনো মন্তব্য নেই।</p>';return;}
+list.innerHTML=comments.map(c=>`<div class="pending-item" style="border-left-color:var(--secondary)">
+<strong style="color:var(--primary)">${escapeHtml(c.author)}</strong> <span style="font-size:12px;color:var(--text-light)">${c.date} | পোস্ট: ${c.post_id}</span>
+<p style="margin:8px 0;font-size:14px">${escapeHtml(c.text)}</p>
+<button class="delete-btn" onclick="deleteCommentItem('${c.id}')">🗑️ ডিলিট</button></div>`).join('');
+}
+async function deleteCommentItem(id){
+if(!confirm('মন্তব্যটি ডিলিট করবেন?'))return;
+const ok=await submitData({action:'deleteComment',commentId:id});
+if(ok){notify('✅ ডিলিট হয়েছে');loadAllComments();}
+}
+async function loadAdminWriters(){
+const list=document.getElementById('writers-list');
+if(!ALL_WRITERS.length){list.innerHTML='<p style="text-align:center;padding:30px;color:var(--text-light)">কোনো নিবন্ধিত লেখক নেই।</p>';return;}
+list.innerHTML=ALL_WRITERS.map(w=>`<div class="writer-card"><div class="writer-avatar">${(w.name_bn||'?').charAt(0)}</div>
+<div class="writer-info"><h3>${w.name_bn}</h3><div class="writer-meta">👤 ${w.username} | 📧 ${w.email} | 📅 ${w.join_date}</div></div>
+<button class="small-btn" onclick="showWriterProfile('${w.id}')">প্রোফাইল</button></div>`).join('');
+}
+async function loadAdminStats(){
+const stats=await fetchData('getStats')||{};
+document.getElementById('admin-stats-content').innerHTML=`<div class="stats-grid" style="margin-top:20px">
+<div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(ALL_POSTS.length)}</span><span class="stat-label" style="color:var(--text-light)">প্রকাশিত লেখা</span></div>
+<div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(ALL_WRITERS.length)}</span><span class="stat-label" style="color:var(--text-light)">লেখক</span></div>
+<div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(localStorage.getItem('sb_visitors')||0)}</span><span class="stat-label" style="color:var(--text-light)">ভিজিটর</span></div></div>`;
+}
+
+function writerCardHTML(w){
+return `<div class="writer-card"><div class="writer-avatar">${(w.name_bn||'?').charAt(0)}</div>
+<div class="writer-info"><h3>${w.name_bn}</h3><div class="writer-meta">${w.profession||'লেখক'} | 📅 যোগদান: ${w.join_date}</div>
+<div style="font-size:14px">${(w.bio||'').slice(0,120)}</div></div>
+<button class="small-btn" onclick="showWriterProfile('${w.id}')">প্রোফাইল দেখুন</button></div>`;
+}
+function showWriterDirectory(){
+hideAll();document.getElementById('page-writer-directory').style.display='block';window.scrollTo(0,0);
+const list=document.getElementById('writer-directory-list');
+if(!ALL_WRITERS.length){list.innerHTML='<p style="text-align:center;padding:40px;color:var(--text-light)">এখনো কোনো নিবন্ধিত লেখক নেই।</p>';return;}
+list.innerHTML=ALL_WRITERS.map(writerCardHTML).join('');
+}
+async function showWriterProfile(wid){
+hideAll();document.getElementById('page-writer-profile').style.display='block';window.scrollTo(0,0);
+const w=await fetchData('getWriterProfile',{writerId:wid});
+if(!w||!w.name_bn){document.getElementById('wp-posts').innerHTML='<p>লেখক পাওয়া যায়নি।</p>';return;}
+document.getElementById('wp-name').textContent=w.name_bn;
+document.getElementById('wp-username').textContent='@'+(w.username||'');
+document.getElementById('wp-birth').textContent=w.birth_date||'—';
+document.getElementById('wp-birthplace').textContent=w.birth_place||'—';
+document.getElementById('wp-address').textContent=w.current_address||'—';
+document.getElementById('wp-profession').textContent=w.profession||'—';
+document.getElementById('wp-education').textContent=w.education||'—';
+document.getElementById('wp-phone').textContent=w.phone||'—';
+document.getElementById('wp-facebook').innerHTML=w.facebook?`<a href="${w.facebook}" target="_blank" style="color:var(--primary)">Facebook</a>`:'—';
+document.getElementById('wp-join').textContent=w.join_date||'—';
+document.getElementById('wp-points').textContent=toBn(w.total_points||0);
+document.getElementById('wp-bio').textContent=w.bio||'';
+WP_POSTS=await fetchData('getWriterPosts',{writerName:w.name_bn});
+WP_POSTS=Array.isArray(WP_POSTS)?WP_POSTS:[];
+renderWriterPosts(WP_POSTS);
+}
+function showWriterProfileByName(name){showWriterProfile(name);}
+function filterWriterPosts(){
+const q=(document.getElementById('wp-search').value||'').toLowerCase();
+return WP_POSTS.filter(p=>p.title.toLowerCase().includes(q));
+}
+function renderWriterPosts(list){
+document.getElementById('wp-count').textContent='মোট '+toBn(list.length)+'টি লেখা প্রকাশিত';
+const el=document.getElementById('wp-posts');
+if(!list.length){el.innerHTML='<p style="text-align:center;padding:30px;color:var(--text-light)">কোনো লেখা পাওয়া যায়নি।</p>';return;}
+el.innerHTML=list.map(p=>`<div class="pending-item" style="cursor:pointer" onclick="showMain();setTimeout(()=>openArticle('${p.id}'),300)">
+<h4>${p.title}</h4><div style="font-size:13px;color:var(--text-light);margin:5px 0">📁 ${p.category} | 📅 ${p.date}</div></div>`).join('');
+}
+function sortWriterPosts(type){
+if(type==='title'){WP_POSTS.sort((a,b)=>a.title.localeCompare(b.title,'bn'));}
+else{WP_POSTS.sort((a,b)=>{const pa=bnToEn(a.date).split('/').reverse().join('');const pb=bnToEn(b.date).split('/').reverse().join('');return pb.localeCompare(pa);});}
+renderWriterPosts(WP_POSTS);
+}
+
+document.getElementById('writer-form').addEventListener('submit',async function(e){
+e.preventDefault();
+const btn=document.getElementById('w-submit');btn.disabled=true;btn.textContent='পাঠানো হচ্ছে...';
+const data={action:'submitPost',title:document.getElementById('w-title').value,category:document.getElementById('w-category').value,author:document.getElementById('w-author').value,excerpt:document.getElementById('w-excerpt').value,content:document.getElementById('w-content').value,imageData:imageData,featured:document.getElementById('w-featured').checked?'yes':'',editorcode:document.getElementById('w-code').value,date:banglaToday()};
+const ok=await submitData(data);
+if(ok){notify(data.editorcode===EDITOR_CODE?'✅ প্রকাশিত!':'✅ জমা হয়েছে! অনুমোদনের পর প্রকাশিত হবে।');this.reset();imageData='';document.getElementById('w-preview').style.display='none';setTimeout(showMain,1500);}
+btn.disabled=false;btn.textContent='জমা দিন';
+});
+
+document.getElementById('writer-register-form').addEventListener('submit',async function(e){
+e.preventDefault();
+if(document.getElementById('wr-password').value!==document.getElementById('wr-password-confirm').value){alert('পাসওয়ার্ড মিলছে না');return;}
+const btn=document.getElementById('wr-submit');btn.disabled=true;btn.textContent='পাঠানো হচ্ছে...';
+const data={action:'registerWriter',username:document.getElementById('wr-username').value,name_bn:document.getElementById('wr-name-bn').value,name_en:document.getElementById('wr-name-en').value,email:document.getElementById('wr-email').value,password:document.getElementById('wr-password').value,phone:document.getElementById('wr-phone').value,birth_date:document.getElementById('wr-birth').value,birth_place:document.getElementById('wr-birthplace').value,current_address:document.getElementById('wr-address').value,profession:document.getElementById('wr-profession').value,education:document.getElementById('wr-education').value,facebook:document.getElementById('wr-facebook').value,bio:document.getElementById('wr-bio').value};
+const ok=await submitData(data);
+if(ok){notify('✅ নিবন্ধন সফল!');this.reset();setTimeout(showMain,1500);}
+btn.disabled=false;btn.textContent='যোগ দিন';
+});
+
+function hideAll(){['page-main','page-writer','page-writer-register','page-writer-directory','page-writer-profile','page-admin','page-about','page-privacy','page-contact'].forEach(id=>{document.getElementById(id).style.display='none';});}
+function showMain(){hideAll();document.getElementById('page-main').style.display='block';initMain();window.scrollTo(0,0);}
+function showWriter(){hideAll();document.getElementById('page-writer').style.display='block';window.scrollTo(0,0);}
+function showWriterRegister(){hideAll();document.getElementById('page-writer-register').style.display='block';window.scrollTo(0,0);}
+function showAdminPanel(){hideAll();document.getElementById('page-admin').style.display='block';loadPending();window.scrollTo(0,0);}
+function showAbout(){hideAll();document.getElementById('page-about').style.display='block';window.scrollTo(0,0);}
+function showPrivacy(){hideAll();document.getElementById('page-privacy').style.display='block';window.scrollTo(0,0);}
+function showContact(){hideAll();document.getElementById('page-contact').style.display='block';window.scrollTo(0,0);}
+function closeModal(){document.getElementById('article-modal').classList.remove('active');document.body.style.overflow='auto';}
+
+document.addEventListener('DOMContentLoaded',initMain);
+document.getElementById('article-modal').addEventListener('click',function(e){if(e.target.id==='article-modal')closeModal();});
+</script>
 </body>
 </html>
