@@ -406,7 +406,7 @@ let ALL_POSTS=[],ALL_WRITERS=[],WP_POSTS=[],currentPostId='',imageData='',imageD
 // ✅ জাদুর ফাংশন: শিটের সারি উল্টো থাকলে সাইট নিজেই ঠিক করে নেবে
 function normalizePost(p){
 const t=String(p.title||'').trim();
-if(/^p?\d{9,}$/.test(t)){
+if(/^p\d+$/.test(t)||/^\d{12,}$/.test(t)){
 return Object.assign({},p,{title:p.category,category:p.author,author:p.excerpt,excerpt:p.content,content:p.image,image:p.featured||'',featured:''});
 }
 return p;
