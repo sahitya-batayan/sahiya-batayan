@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>সাহিত্য বাতায়ন - অনলাইন পত্রিকা</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://script.google.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -60,6 +62,8 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 .share-buttons{display:flex;gap:6px;flex-wrap:wrap;padding-top:10px;border-top:1px solid var(--border)}
 .share-btn{padding:6px 10px;border-radius:4px;color:#fff;border:none;cursor:pointer;font-size:12px}
 .share-facebook{background:#1877f2}.share-whatsapp{background:#25d366}.share-twitter{background:#1da1f2}.share-linkedin{background:#0a66c2}.share-copy{background:var(--secondary)}.share-mail{background:#ea4335}.share-print{background:#607d8b}.share-pdf{background:#e74c3c}
+.like-btn{background:#e74c3c;color:#fff;border:none;padding:10px 22px;border-radius:5px;cursor:pointer;font-size:15px;font-weight:600;font-family:inherit}
+.like-btn.liked{background:#922b21}
 .article-modal,.granth-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:1000;overflow-y:auto;padding:40px 20px}
 .article-modal.active,.granth-modal.active{display:block}
 .modal-content{background:#fff;max-width:800px;margin:0 auto;border-radius:8px;padding:40px;position:relative}
@@ -165,7 +169,7 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 
 <div id="page-main">
 <header>
-<div class="top-bar"><div class="container"><span id="current-date"></span><div><a href="https://www.facebook.com/profile.php?id=61594281560159" target="_blank">📘 Facebook</a><a href="https://t.me/sahityabatayan" target="_blank">✈️ Telegram</a><a href="https://whatsapp.com/channel/0029VbDjmKUIN9ivthbx0K34" target="_blank">💬 WhatsApp</a><a href="tel:01905883389">">📞 ০১৫৭৭৪৩৯২৫৭</a></div></div></div>
+<div class="top-bar"><div class="container"><span id="current-date"></span><div><a href="https://www.facebook.com/profile.php?id=61594281560159" target="_blank">📘 Facebook</a><a href="https://t.me/sahityabatayan" target="_blank">✈️ Telegram</a><a href="https://whatsapp.com/channel/0029VbDjmKUIN9ivthbx0K34" target="_blank">💬 WhatsApp</a><a href="tel:01577439257">📞 ০১৫৭৭৪৩৯২৫৭</a></div></div></div>
 <div class="main-header"><div class="container">
 <svg width="230" height="190" viewBox="0 0 360 300" style="margin:0 auto;display:block" role="img" aria-label="সাহিত্য বাতায়ন লোগো">
 <path d="M96 168 L96 150 A84 84 0 0 1 264 150 L264 168 L242 168 L242 150 A62 62 0 0 0 118 150 L118 168 Z" fill="#d9a520"/>
@@ -206,7 +210,6 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 </div></nav>
 </header>
 
-<!-- ভবিষ্যতের বিজ্ঞাপন স্লট (AdSense/Adsterra কোড পরে এখানে বসবে) -->
 <div class="ad-slot" id="ad-top"></div>
 
 <div class="stats-bar"><div class="container"><div class="stats-grid">
@@ -231,8 +234,8 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <article class="post-card"><div class="post-card-body"><span class="category-tag">কবিতা</span><h3>রবীন্দ্রনাথ ঠাকুর (১৮৬১-১৯১)</h3><blockquote>"যেখানে অবাধ ভয়, যেখানে উন্নত শির..."</blockquote><p class="excerpt">বিশ্বকবি, নোবেলজয়ী। গীতাঞ্জলি, সোনার তরী — বাংলা সাহিত্যের সম্রাট।</p><div class="meta">📚 কবিতা | গল্প | উপন্যাস | গান</div></div></article>
 <article class="post-card"><div class="post-card-body"><span class="category-tag">কবিতা</span><h3>কাজী নজরুল ইসলাম (১৮৯৯-১৯৭৬)</h3><blockquote>"আমি চঞ্চল, আমি অস্থির..."</blockquote><p class="excerpt">বিদ্রোহী কবি, জাতীয় কবি। অগ্নিবীণা, সঞ্চয়িতা — সাম্য ও বিদ্রোহের কণ্ঠ।</p><div class="meta">📚 কবিতা | গান | উপন্যাস</div></div></article>
 <article class="post-card"><div class="post-card-body"><span class="category-tag">কবিতা</span><h3>জীবনানন্দ দাশ (১৮৯৯-১৯৫৪)</h3><blockquote>"বাংলার মুখ আমি দেখিয়াছি..."</blockquote><p class="excerpt">প্রকৃতি ও বিরহের কবি। ধূসর পান্ডুলিপি, বনলতা সেন।</p><div class="meta">📚 কবিতা | প্রবন্ধ</div></div></article>
-<article class="post-card"><div class="post-card-body"><span class="category-tag">উপন্যাস</span><h3>শরৎচন্দ্র চট্টোপাধ্যায় (১৮৭৮-১৯৩৮)</h3><p class="excerpt">বাংলা কথাসাহিত্যের জনপ্রিয়তম ঔপন্যাসিক। পথের দাবী, দেবদাস, শ্রীকান্ত।</p><div class="meta">📚 উপন্যাস | ছোটগল্প</div></div></article>
-<article class="post-card"><div class="post-card-body"><span class="category-tag">উপন্যাস</span><h3>বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৩-১৮৯৪)</h3><blockquote>"বন্দে মাতরম্"</blockquote><p class="excerpt">বাংলা উপন্যাসের জনক। দুর্গেশনন্দিনী, আনন্দমঠ।</p><div class="meta">📚 উপন্যাস | প্রবন্ধ</div></div></article>
+<article class="post-card"><div class="post-card-body"><span class="category-tag">উপন্যাস</span><h3>শরৎচন্দ্র চট্টোপাধ্যায় (১৮৭-১৯৩৮)</h3><p class="excerpt">বাংলা কথাসাহিত্যের জনপ্রিয়তম ঔপন্যাসিক। পথের দাবী, দেবদাস, শ্রীকান্ত।</p><div class="meta">📚 উপন্যাস | ছোটগল্প</div></div></article>
+<article class="post-card"><div class="post-card-body"><span class="category-tag">উপন্যাস</span><h3>বঙ্কিমচন্দ্র চট্টোপাধ্যায় (১৮৩৮-১৮৯৪)</h3><blockquote>"বন্দে মাতরম্"</blockquote><p class="excerpt">বাংলা উপন্যাসের জনক। দুর্গেশনন্দিনী, আনন্দমঠ।</p><div class="meta">📚 উপন্যাস | প্রবন্ধ</div></div></article>
 <article class="post-card"><div class="post-card-body"><span class="category-tag">কবিতা</span><h3>জসীম উদ্‌দীন (১৯০৩-১৯৭৬)</h3><p class="excerpt">পল্লীকবি। নকশী কাঁথার মাঠ, সোনার বাংলা — গ্রামবাংলার কবি।</p><div class="meta">📚 কবিতা | ছড়া</div></div></article>
 </div></section>
 <section><h2 class="section-title">🔔 যুক্ত থাকুন</h2>
@@ -241,14 +244,15 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <article class="post-card"><div class="post-card-body"><span class="category-tag">সোশ্যাল</span><h3>📘 Facebook পেইজ</h3><p class="excerpt">সাহিত্য বাতায়নের সব আপডেট, লেখা ও ঘোষণা পেতে লাইক করুন।</p><a class="buy-btn" style="background:#1877f2" target="_blank" href="https://www.facebook.com/profile.php?id=61594281560159">ফলো করুন</a></div></article>
 <article class="post-card"><div class="post-card-body"><span class="category-tag">সোশ্যাল</span><h3>✈️ Telegram চ্যানেল</h3><p class="excerpt">প্রতিটি নতুন লেখা প্রকাশের সাথে সাথেই নোটিফিকেশন পান।</p><a class="buy-btn" style="background:#229ED9" target="_blank" href="https://t.me/sahityabatayan">জয়েন করুন</a></div></article>
 <article class="post-card"><div class="post-card-body"><span class="category-tag">সোশ্যাল</span><h3>💬 WhatsApp চ্যানেল</h3><p class="excerpt">মোবাইলে সরাসরি লেখার আপডেট পেতে চ্যানেল ফলো করুন।</p><a class="buy-btn" style="background:#25D366" target="_blank" href="https://whatsapp.com/channel/0029VbDjmKUIN9ivthbx0K34">ফলো করুন</a></div></article>
-</div></section> <section><h2 class="section-title">📚 বই ড্রপ</h2><p class="section-note">রিভিউ পড়ুন, বই সংগ্রহ করুন — কমিশন লিংক</p>
+</div></section>
+<section><h2 class="section-title">📚 বই ড্রপ</h2><p class="section-note">রিভিউ পড়ুন, বই সংগ্রহ করুন — কমিশন লিংক</p>
 <div class="posts-grid" id="book-grid"></div></section>
 </div></main>
 
 <footer class="site-footer"><div class="container">
 <div class="footer-content">
 <div><h3>সাহিত্য বাতায়ন</h3><p>সাহিত্য, সংবাদ ও সংস্কৃতি বিষয়ক অনলাইন পত্রিকা।</p></div>
-<div><h3>যোগাযোগ</h3><p>📍 খিলগাঁও, ঢাকা-১২১৯</p><p>📞 ০১৫৭৭৪৩৯২৫৭</p><p>📧 sahityabatayan@gmail.com</p></div>
+<div><h3>যোগাযোগ</h3><p>📍 খিলগাঁও, ঢাকা-১২১৯</p><p>📞 ১৫৭৪৯২৭</p><p>📧 sahityabatayan@gmail.com</p></div>
 <div><h3>দ্রুত লিংক</h3>
 <p><a href="#" onclick="showWriterDirectory();return false;">লেখক তালিকা ও প্রোফাইল</a></p>
 <p><a href="#" onclick="showGranth();return false;">বিখ্যাত কাব্যগ্রন্থ</a></p>
@@ -265,11 +269,10 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <a href="https://whatsapp.com/channel/0029VbDjmKUIN9ivthbx0K34" target="_blank" class="fb-follow" style="background:#25D366;margin-left:8px">💬 WhatsApp</a>
 </div>
 </div>
-<div class="footer-bottom"><p>সম্পাদক ও প্রকাশক: মুহিতুল ইসলাম মুন্না</p><p>স্বত্ব © ২০২৬ সাহিত্য বাতায়ন কর্তৃক সর্বস্বত্ব সংরক্ষিত</p></div>
+<div class="footer-bottom"><p>সম্পাদক ও প্রকাশক: মুহিতুল ইসলাম মুন্না</p><p>© ২০৬ সাহিত্য বাতায়ন কর্তৃক সর্বস্বত্ব সংরক্ষিত</p></div>
 </div></footer>
 </div>
 
-<!-- লেখা জমা -->
 <div id="page-writer" style="display:none"><div class="container"><div class="writer-wrap">
 <h2>✍️ নতুন লেখা যোগ করুন</h2>
 <p class="writer-note">লেখা জমা দিলে সম্পাদকের অনুমোদনের পর প্রকাশিত হবে।</p>
@@ -277,7 +280,7 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <div class="form-group"><label>শিরোনাম *</label><input id="w-title" required></div>
 <div class="form-group"><label>বিভাগ *</label><select id="w-category"><option>কবিতা</option><option>ছড়া</option><option>ছোটগল্প</option><option>অণুগল্প</option><option>প্রবন্ধ</option><option>কলাম</option><option>ফিচার</option><option>সংবাদ</option><option>বুক রিভিউ</option><option>অনুবাদ</option><option>ভ্রমণ</option><option>সাক্ষাৎকার</option><option>খেলাধুলা</option><option>সাংস্কৃতিক</option><option>তরুণ উদীয়মান কলম</option><option>নারীদের কথা</option></select></div>
 <div class="form-group"><label>লেখকের নাম *</label><input id="w-author" required></div>
-<div class="form-group"><label>সারসংক্ষেপ (১-২ লাইন) *</label><textarea id="w-excerpt" rows="2" required></textarea></div>
+<div class="form-group"><label>সারসংক্ষেপ (১- লাইন) *</label><textarea id="w-excerpt" rows="2" required></textarea></div>
 <div class="form-group"><label>মূল লেখা *</label><textarea id="w-content" rows="12" required></textarea></div>
 <div class="form-group"><label>📷 ছবি আপলোড (ফাইল থেকে)</label><input type="file" id="w-image" accept="image/*"><img id="w-preview" class="image-preview"></div>
 <div class="form-group"><label><input type="checkbox" id="w-featured"> ফিচার্ড</label></div>
@@ -286,7 +289,6 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 </form>
 </div></div></div>
 
-<!-- লেখক নিবন্ধন -->
 <div id="page-writer-register" style="display:none"><div class="container"><div class="writer-wrap">
 <h2>📝 লেখক নিবন্ধন</h2>
 <p class="writer-note">নিবন্ধিত লেখকদের আলাদা প্রোফাইল পেজ থাকবে</p>
@@ -314,7 +316,6 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 </form>
 </div></div></div>
 
-<!-- লেখক তালিকা -->
 <div id="page-writer-directory" style="display:none"><div class="container"><div class="writer-wrap">
 <h2>👥 লেখক তালিকা</h2>
 <p class="writer-note">প্রোফাইল দেখতে "প্রোফাইল দেখুন" বাটনে ক্লিক করুন</p>
@@ -322,7 +323,6 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← প্রচ্ছদে ফিরুন</button></div>
 </div></div></div>
 
-<!-- লেখক প্রোফাইল -->
 <div id="page-writer-profile" style="display:none"><div class="container"><div class="writer-wrap">
 <div style="text-align:center;margin-bottom:25px;padding-bottom:20px;border-bottom:3px solid var(--primary)">
 <img id="wp-photo" style="display:none;width:140px;height:140px;border-radius:50%;object-fit:cover;margin:0 auto 15px;border:4px solid var(--primary)">
@@ -352,7 +352,6 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <div class="form-actions"><button type="button" class="btn-secondary" onclick="showWriterDirectory()">← লেখক তালিকা</button><button type="button" class="btn-secondary" onclick="showMain()">প্রচ্ছদ</button></div>
 </div></div></div>
 
-<!-- কাব্যগ্রন্থ -->
 <div id="page-granth" style="display:none"><div class="container"><div class="writer-wrap">
 <h2>📚 বিখ্যাত কাব্যগ্রন্থ</h2>
 <p class="writer-note">গ্রন্থে ক্লিক করুন — ভেতরের কবিতা পড়ুন</p>
@@ -360,22 +359,35 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← প্রচ্ছদে ফিরুন</button></div>
 </div></div></div>
 
-<!-- অ্যাডমিন -->
 <div id="page-admin" style="display:none"><div class="container"><div class="admin-panel">
 <h2>⚙️ অ্যাডমিন প্যানেল</h2>
 <div class="admin-tabs">
 <button class="admin-tab active" onclick="switchAdminTab('pending',this)">অনুমোদনের অপেক্ষায়</button>
+<button class="admin-tab" onclick="switchAdminTab('edit',this)">✏️ লেখা এডিট</button>
 <button class="admin-tab" onclick="switchAdminTab('comments',this)">মন্তব্য</button>
 <button class="admin-tab" onclick="switchAdminTab('writers',this)">লেখক</button>
 <button class="admin-tab" onclick="switchAdminTab('stats',this)">পরিসংখ্যান</button>
 </div>
 <div id="admin-pending" class="admin-content active"><div id="pending-list"></div></div>
+<div id="admin-edit" class="admin-content">
+<div class="form-group"><label>🔑 সম্পাদক কোড (এডিট করতে লাগবে)</label><input id="edit-code" type="password" placeholder="SB2026"></div>
+<div id="edit-form-wrap" style="display:none;background:#fff;padding:20px;border-radius:8px;border:2px solid var(--primary);margin-bottom:20px">
+<h3 style="color:var(--primary);margin-bottom:15px">লেখা সম্পাদনা</h3>
+<div class="form-group"><label>শিরোনাম</label><input id="ed-title"></div>
+<div class="form-group"><label>বিভাগ</label><input id="ed-category"></div>
+<div class="form-group"><label>লেখক</label><input id="ed-author"></div>
+<div class="form-group"><label>সারসংক্ষেপ</label><textarea id="ed-excerpt" rows="2"></textarea></div>
+<div class="form-group"><label>মূল লেখা</label><textarea id="ed-content" rows="10"></textarea></div>
+<div class="form-group"><label>ছবির লিংক</label><input id="ed-image"></div>
+<div class="form-actions"><button class="approve-btn" onclick="saveEdit()">💾 সেভ করুন</button><button class="btn-secondary" onclick="document.getElementById('edit-form-wrap').style.display='none'">বাতিল</button></div>
+</div>
+<div id="edit-list"></div>
+</div>
 <div id="admin-comments" class="admin-content"><div id="comments-list"></div></div>
 <div id="admin-writers" class="admin-content"><div id="writers-list"></div></div>
 <div id="admin-stats" class="admin-content"><div id="admin-stats-content"></div></div>
 </div></div></div>
 
-<!-- ই-পেপার -->
 <div id="page-epaper" style="display:none"><div class="container"><div class="writer-wrap">
 <h2>📰 ই-পেপার</h2>
 <p class="writer-note">আসল পত্রিকার মতো পাতা ধরে ধরে পড়ুন</p>
@@ -383,10 +395,9 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 <div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← প্রচ্ছদে ফিরুন</button></div>
 </div></div></div>
 
-<!-- তথ্য পাতা -->
-<div id="page-about" style="display:none"><div class="container"><div class="info-page"><h2>আমাদের সম্পর্কে</h2><p>সাহিত্য বাতায়ন একটি অনলাইন সাহিত্য, সংবাদ ও সংস্কৃতি বিষয়ক পত্রিকা। প্রতিটি নতুন লেখা সম্পাদকের অনুমোদনের পর প্রকাশিত হয়।</p><p>📞 ০১৫৭৭৪৩৯২৫৭ |  sahityabatayan@gmail.com</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
+<div id="page-about" style="display:none"><div class="container"><div class="info-page"><h2>আমাদের সম্পর্কে</h2><p>সাহিত্য বাতায়ন বাংলা ভাষার সেবায় নিবেদিত একটি অনলাইন পত্রিকা। ২০২৬ সাল থেকে আমরা নিয়মিত কবিতা, গল্প, প্রবন্ধ, সাক্ষাৎকার ও সংবাদ প্রকাশ করে আসছি। নতুন ও প্রতিষ্ঠিত — সকল লেখকের জন্য আমাদের দরজা খোলা।</p><p>📞 ১৫৭৪৯২৭ |  sahityabatayan@gmail.com</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
 <div id="page-privacy" style="display:none"><div class="container"><div class="info-page"><h2>গোপনীয়তা নীতি</h2><p>আমরা আপনার তথ্য তৃতীয় পক্ষের কাছে বিক্রি করি না। লেখকদের তথ্য ও ছবি শুধু প্রোফাইল প্রদর্শনের জন্য ব্যবহৃত হয়।</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
-<div id="page-contact" style="display:none"><div class="container"><div class="info-page"><h2>যোগাযোগ</h2><p>📧 sahityabatayan@gmail.com<br>📞 ০১৫৭৭৪৩৯২৫৭<br>📍 খিলগাঁও, ঢাকা-১২১৯</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
+<div id="page-contact" style="display:none"><div class="container"><div class="info-page"><h2>যোগাযোগ</h2><p>📧 sahityabatayan@gmail.com<br>📞 ১৫৭৪৯২৭<br>📍 খিলগাঁও, ঢাকা-১২১৯</p><div class="form-actions"><button type="button" class="btn-secondary" onclick="showMain()">← ফিরে যান</button></div></div></div></div>
 
 <div class="article-modal" id="article-modal"><div class="modal-content">
 <button class="modal-close" onclick="closeModal()">×</button>
@@ -407,11 +418,10 @@ body{font-family:'Noto Sans Bengali',sans-serif;line-height:1.8;color:var(--text
 </div>
 
 <script>
-const SCRIPT_URL='https://script.google.com/macros/s/AKfycbx5C72MF4UL5OSCAbg9Me5PQObcBlxxfTKHU5XVBXw5-PDEuq5UV5BsmIT66MdT1q9k/exec';
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbxuCrL62mocLAYLn7tIMzjj8koUfE98ZOStOv-EDDNylUxsNjBm7_Brvu5fHekqgTCU/exec';
 const EDITOR_CODE='SB2026';
-let ALL_POSTS=[],ALL_WRITERS=[],WP_POSTS=[],currentPostId='',imageData='',imageData2='';
+let ALL_POSTS=[],ALL_WRITERS=[],WP_POSTS=[],STATS_MAP={},currentPostId='',editingId='',imageData='',imageData2='';
 
-// ✅ সব ধরনের আইডি সারি চিনে নেবে: p5, p5, p1788869447993, 1788869447993
 function normalizePost(p){
 const t=String(p.title||'').trim();
 if(/^p\d+$/.test(t)||/^\d{12,}$/.test(t)){
@@ -419,6 +429,9 @@ return Object.assign({},p,{title:p.category,category:p.author,author:p.excerpt,e
 }
 return p;
 }
+function okPost(p){return p.status!=='pending'&&p.status!=='rejected';}
+function getCache(){try{var raw=localStorage.getItem('sb_cache');if(!raw)return null;var o=JSON.parse(raw);if(Date.now()-o.t>10*60*1000)return null;return o;}catch(e){return null;}}
+function setCache(o){try{o.t=Date.now();localStorage.setItem('sb_cache',JSON.stringify(o));}catch(e){}}
 
 const BOOKS=[
 {t:'পথের পাঁচালী',a:'বিভূতিভূষণ বন্দ্যোপাধ্যায়',d:'অপু-দুর্গার অমর গল্প।',s:'পথের+পাঁচালী'},
@@ -436,10 +449,10 @@ const BOOKS=[
 ];
 
 const GRANTHO=[
-{book:'গীতাঞ্জলি',author:'রবীন্দ্রনাথ ঠাকুর',year:'১৯১০',desc:'নোবেল পুরস্কার এনে দেওয়া অমর কাব্যগ্রন্থ।',poems:[{t:'চিত্ত যেথা ভয়শূন্য',c:'চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির,\nজ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর\nআপন প্রাঙ্গণতলে দিবসশর্বরী\nবসুধারে রাখে নাই খণ্ড ক্ষুদ্র করি,\nযেথা বাক্য হৃদয়ের উৎসমুখ হতে\nউচ্ছ্বসিয়া উঠে, যেথা নির্বারিত স্রোতে\nদেশে দেশে দিশে দিশে কর্মধারা ধায়\nঅজস্র সহস্রবিধ চরিতার্থতায়—\nযেথা তুচ্ছ আচারের মরুবালুরাশি\nবিচারের স্রোতঃপথ ফেলে নাই গ্রাসি,\nপৌরুষেরে করে নি শতধা; নিত্য যেথা\nতুমি সর্ব কর্ম চিন্তা আনন্দের নেতা—\nনিজ হস্তে নির্দয় আঘাত করি, পিতঃ,\nভারতেরে সেই স্বর্গে করো জাগরিত।'}]},
+{book:'গীতাঞ্জলি',author:'রবীন্দ্রনাথ ঠাকুর',year:'১৯০',desc:'নোবেল পুরস্কার এনে দেওয়া অমর কাব্যগ্রন্থ।',poems:[{t:'চিত্ত যেথা ভয়শূন্য',c:'চিত্ত যেথা ভয়শূন্য, উচ্চ যেথা শির,\nজ্ঞান যেথা মুক্ত, যেথা গৃহের প্রাচীর\nআপন প্রাঙ্গণতলে দিবসশর্বরী\nবসুধারে রাখে নাই খণ্ড ক্ষুদ্র করি,\nযেথা বাক্য হৃদয়ের উৎসমুখ হতে\nউচ্ছ্বসিয়া উঠে, যেথা নির্বারিত স্রোতে\nদেশে দেশে দিশে দিশে কর্মধারা ধায়\nঅজস্র সহস্রবিধ চরিতার্থতায়—\nযেথা তুচ্ছ আচারের মরুবালুরাশি\nবিচারের স্রোতঃপথ ফেলে নাই গ্রাসি,\nপৌরুষেরে করে নি শতধা; নিত্য যেথা\nতুমি সর্ব কর্ম চিন্তা আনন্দের নেতা—\nনিজ হস্তে নির্দয় আঘাত করি, পিতঃ,\nভারতেরে সেই স্বর্গে করো জাগরিত।'}]},
 {book:'বনলতা সেন',author:'জীবনানন্দ দাশ',year:'১৯৪২',desc:'আধুনিক বাংলা কবিতার মাইলফলক সংগ্রহ।',poems:[{t:'বনলতা সেন',c:'হাজার বছর ধরে আমি পথ হাঁটিতেছি পৃথিবীর পথে,\nসিংহলের সমুদ্র থেকে নিশীথে অন্ধকার মালয় সাগরে\nঅনেক ঘুরেছি; বিম্বিসার অশোকের ধূসর নগরে\nআমি ছিলাম; সেখানে ম্লান স্মৃতির মন্দিরে আমার\nক্লান্ত কয়েকটি কথা মনে আছে; আজও আমি ভুলি নাই\nসে-সব অন্ধকার যুগ; আমি জানিতাম রাজীদের, তবু মনে আছে\nসে-কালের একটি মেয়ে-মানুষের মুখ—বনলতা সেন।'}]},
-{book:'সঞ্চয়িতা',author:'কাজী নজরুল ইসলাম',year:'১৯৭',desc:'বিদ্রোহী কবির নির্বাচিত কবিতা সংগ্রহ।',poems:[{t:'বিদ্রোহী (নির্বাচিত অংশ)',c:'কহ, মহাবীর,\nবলিষ্ঠ কণ্ঠে—\n"আমি চঞ্চল, আমি অস্থির,\nআমি বাঁধন মানি না, মানি না!"'}]},
-{book:'আনন্দমঠ',author:'বঙ্কিমচন্দ্র চট্টোপাধ্যায়',year:'১৮৮২',desc:'জাতীয় সংগীত "বন্দে মাতরম"-এর জন্মভূমি।',poems:[{t:'বন্দে মাতরম্',c:'বন্দে মাতরম্!\nসুজলাং সুফলাং মলয়জশীতলাং\nশস্যশ্যামলাং মাতরম্!\nশুভ্রজ্যোৎস্না পুলকিত যামিনীং,\nফুল্লকুসুমিত দ্রুমদলশোভিনীং,\nসুহাসিনীং সুমধুর ভাষিনীং\nসুখদাং বরদাং মাতরম্!'}]}
+{book:'সঞ্চয়িতা',author:'কাজী নজরুল ইসলাম',year:'১৯২৭',desc:'বিদ্রোহী কবির নির্বাচিত কবিতা সংগ্রহ।',poems:[{t:'বিদ্রোহী (নির্বাচিত অংশ)',c:'কহ, মহাবীর,\nবলিষ্ঠ কণ্ঠে—\n"আমি চঞ্চল, আমি অস্থির,\nআমি বাঁধন মানি না, মানি না!"'}]},
+{book:'আনন্দমঠ',author:'বঙ্কিমচন্দ্র চট্টোপাধ্যায়',year:'১৮২',desc:'জাতীয় সংগীত "বন্দে মাতরম"-এর জন্মভূমি।',poems:[{t:'বন্দে মাতরম্',c:'বন্দে মাতরম্!\nসুজলাং সুফলাং মলয়জশীতলাং\nশস্যশ্যামলাং মাতরম্!\nশুভ্রজ্যোৎস্না পুলকিত যামিনীং,\nফুল্লকুসুমিত দ্রুমদলশোভিনীং,\nসুহাসিনীং সুমধুর ভাষিনীং\nসুখদাং বরদাং মাতরম্!'}]}
 ];
 
 const EPAPER_PAGES=[
@@ -460,14 +473,12 @@ function banglaToday(){const m=['জানুয়ারি','ফেব্র�
 function notify(msg){const n=document.createElement('div');n.className='notification';n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),4000);}
 function linkify(s){return String(s).replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>').replace(/\n/g,'<br>');}
 function metaText(p){return '✍️ <a href="#" onclick="showWriterProfileByName(\''+String(p.author).replace(/'/g,"\\'")+'\');return false;">'+p.author+'</a>'+(p.date?' | 📅 '+p.date:'');}
+function statOf(id){return STATS_MAP[id]||(STATS_MAP[id]={views:0,likes:0});}
 
 function trackVisitor(){
-const today=new Date().toDateString();
-let v=parseInt(localStorage.getItem('sb_visitors')||'0');
-let last=localStorage.getItem('sb_last_visit');
-let t=parseInt(localStorage.getItem('sb_today_visitors')||'0');
-if(last!==today){v++;t=1;localStorage.setItem('sb_last_visit',today);}else{t++;}
-localStorage.setItem('sb_visitors',v);localStorage.setItem('sb_today_visitors',t);
+let uid=localStorage.getItem('sb_uid');
+if(!uid){uid='u'+Date.now()+Math.floor(Math.random()*100000);localStorage.setItem('sb_uid',uid);}
+submitData({action:'trackVisit',uid:uid});
 }
 
 function bindImageInput(inputId,previewId,maxW,setter){
@@ -519,7 +530,6 @@ document.getElementById('book-grid').innerHTML=BOOKS.map(b=>`
 <p class="excerpt">${b.a} — ${b.d}</p>
 <a class="buy-btn" target="_blank" href="https://www.rokomari.com/search?term=${b.s}">🛒 বইটি দেখুন</a></div></article>`).join('');
 }
-
 function granthCardHTML(g,i){
 return `<article class="post-card" onclick="openGranth(${i})"><div class="post-card-body">
 <span class="category-tag">কাব্যগ্রন্থ</span><h3>${g.book}</h3>
@@ -544,22 +554,15 @@ document.body.style.overflow='hidden';
 }
 function closeGranth(){document.getElementById('granth-modal').classList.remove('active');document.body.style.overflow='auto';}
 
-async function initMain(){
-trackVisitor();updateDate();renderBooks();renderGranthGrids();
-document.getElementById('stat-visitors').textContent=toBn(localStorage.getItem('sb_visitors')||'0');
-document.getElementById('stat-today').textContent=toBn(localStorage.getItem('sb_today_visitors')||'0');
-let posts=await fetchData('getPosts');
-posts=Array.isArray(posts)?posts:[];
-posts=posts.map(normalizePost).filter(p=>p.status!=='pending'&&p.status!=='rejected');
-ALL_POSTS=posts;
-const stats=await fetchData('getStats')||{};
-const writers=await fetchData('getWriters');
-ALL_WRITERS=Array.isArray(writers)?writers:[];
+function renderHomeBlocks(){
 document.getElementById('stat-posts').textContent=toBn(ALL_POSTS.length);
 document.getElementById('stat-writers').textContent=toBn(ALL_WRITERS.length);
-document.getElementById('stat-visitors').textContent=toBn(stats.visitors||localStorage.getItem('sb_visitors')||'0');
 document.getElementById('breaking-ticker').textContent=ALL_POSTS.slice(0,5).map(p=>'📰 '+p.title).join('  •  ')||'📰 নতুন লেখা শীঘ্রই আসছে';
-
+renderGrid(ALL_POSTS);
+if(ALL_WRITERS.length){
+document.getElementById('writer-count-section').style.display='block';
+document.getElementById('writer-list').innerHTML=ALL_WRITERS.slice(0,6).map(writerCardHTML).join('');
+}
 const featured=ALL_POSTS.filter(p=>String(p.featured||'').toLowerCase()==='yes'||String(p.featured||'').toLowerCase()==='true');
 const featSec=document.getElementById('featured-section');
 if(featured.length){featSec.style.display='grid';const main=featured[0];
@@ -567,14 +570,24 @@ document.getElementById('featured-main').innerHTML='<img src="'+(main.image||'ht
 document.getElementById('featured-main').onclick=function(){openArticle(main.id);};
 document.getElementById('featured-side').innerHTML=featured.slice(1,3).map(p=>'<div class="featured-item" onclick="openArticle(\''+p.id+'\')"><img src="'+(p.image||'https://placehold.co/600x120/c0392b/ffffff?text=SB')+'" onerror="this.src=\'https://placehold.co/600x120/c0392b/ffffff?text=SB\'"><div class="featured-item-body"><span class="category-tag">'+p.category+'</span><h4 style="margin:8px 0;font-size:16px">'+p.title+'</h4></div></div>').join('');
 }else{featSec.style.display='none';}
-
-renderGrid(ALL_POSTS);
-
-if(ALL_WRITERS.length){
-document.getElementById('writer-count-section').style.display='block';
-document.getElementById('writer-list').innerHTML=ALL_WRITERS.slice(0,6).map(writerCardHTML).join('');
 }
 
+async function initMain(){
+trackVisitor();updateDate();renderBooks();renderGranthGrids();
+var c=getCache();
+if(c){ALL_POSTS=(c.posts||[]);ALL_WRITERS=(c.writers||[]);renderHomeBlocks();}
+const res=await Promise.all([fetchData('getPosts'),fetchData('getStats'),fetchData('getWriters'),fetchData('getPostStats')]);
+let posts=Array.isArray(res[0])?res[0]:[];
+posts=posts.map(normalizePost).filter(okPost);
+ALL_POSTS=posts;
+const stats=res[1]||{};
+ALL_WRITERS=Array.isArray(res[2])?res[2]:[];
+STATS_MAP={};
+(Array.isArray(res[3])?res[3]:[]).forEach(s=>{STATS_MAP[s.id]={views:s.views||0,likes:s.likes||0};});
+setCache({posts:ALL_POSTS,writers:ALL_WRITERS});
+document.getElementById('stat-visitors').textContent=toBn(stats.visitors||0);
+document.getElementById('stat-today').textContent=toBn(stats.today||0);
+renderHomeBlocks();
 document.querySelectorAll('#nav-menu a[data-category]').forEach(function(link){
 link.onclick=function(e){e.preventDefault();
 document.querySelectorAll('#nav-menu a').forEach(a=>a.classList.remove('active'));link.classList.add('active');
@@ -589,24 +602,35 @@ if(pid)openArticle(pid);
 function renderGrid(posts){
 const grid=document.getElementById('posts-grid');
 if(!posts.length){grid.innerHTML='<p style="grid-column:1/-1;text-align:center;padding:40px">এই বিভাগে এখনো কোনো লেখা প্রকাশিত হয়নি।</p>';return;}
-grid.innerHTML=posts.map(p=>`
+grid.innerHTML=posts.map(p=>{const st=statOf(p.id);return `
 <article class="post-card" onclick="if(!event.target.closest('.share-btn'))openArticle('${p.id}')">
-<img src="${p.image||'https://placehold.co/600x350/c0392b/ffffff?text=Sahitya+Batayan'}" onerror="this.src='https://placehold.co/600x350/c0392b/ffffff?text=Sahitya+Batayan'">
+<img src="${p.image||'https://placehold.co/600x350/c0392b/ffffff?text=Sahitya+Batayan'}" loading="lazy" onerror="this.src='https://placehold.co/600x350/c0392b/ffffff?text=Sahitya+Batayan'">
 <div class="post-card-body"><span class="category-tag">${p.category}</span><h3>${p.title}</h3><p class="excerpt">${p.excerpt}</p>
-<div class="meta">✍️ ${p.author} | 📅 ${p.date}</div>
+<div class="meta">✍️ ${p.author} | 📅 ${p.date}<br>👁️ ${toBn(st.views)} বার পঠিত | ❤️ ${toBn(st.likes)} লাইক</div>
 ${shareButtonsHTML(p,true)}
-</div></article>`).join('');
+</div></article>`;}).join('');
 }
 
 function openArticle(id){
 const post=ALL_POSTS.find(p=>p.id===id);if(!post)return;
 currentPostId=id;
+if(!sessionStorage.getItem('sb_viewed_'+id)){
+sessionStorage.setItem('sb_viewed_'+id,'1');
+submitData({action:'trackView',postId:id});
+statOf(id).views=(statOf(id).views||0)+1;
+}
+const st=statOf(id);
+const liked=localStorage.getItem('sb_liked_'+id)?' liked':'';
 document.getElementById('modal-body').innerHTML=`
 <div class="modal-header-brand"><div><div class="brand-text">সাহিত্য বাতায়ন</div><span class="brand-sub">A Literary Portal</span></div></div>
 <h1>${post.title}</h1>
 <div class="meta">${metaText(post)} | 📁 ${post.category}</div>
 ${post.image?`<img class="article-image" src="${post.image}" onerror="this.style.display='none'">`:''}
 <div class="article-body">${linkify(post.content)}</div>
+<div style="margin:25px 0;display:flex;gap:15px;align-items:center;flex-wrap:wrap">
+<button id="like-btn" class="like-btn${liked}" onclick="handleLike()">❤️ লাইক <span id="like-count">${toBn(st.likes)}</span></button>
+<span style="color:var(--text-light);font-size:15px">👁️ ${toBn(st.views)} বার পঠিত</span>
+</div>
 <div class="ad-slot" id="ad-article"></div>
 <div class="modal-footer-brand">© ২০২৬ <strong>সাহিত্য বাতায়ন</strong> | সম্পাদক: মুহিতুল ইসলাম মুন্না</div>
 ${shareButtonsHTML(post,false)}
@@ -617,6 +641,20 @@ ${shareButtonsHTML(post,false)}
 document.getElementById('article-modal').classList.add('active');
 document.body.style.overflow='hidden';
 loadComments(id);
+}
+
+function handleLike(){
+const id=currentPostId;
+if(localStorage.getItem('sb_liked_'+id)){notify('✅ আপনি আগেই লাইক দিয়েছেন');return;}
+submitData({action:'likePost',postId:id}).then(ok=>{
+if(ok){
+localStorage.setItem('sb_liked_'+id,'1');
+statOf(id).likes=(statOf(id).likes||0)+1;
+const el=document.getElementById('like-count');if(el)el.textContent=toBn(statOf(id).likes);
+const btn=document.getElementById('like-btn');if(btn)btn.classList.add('liked');
+notify('❤️ ধন্যবাদ! আপনার লাইক যোগ হয়েছে');
+}
+});
 }
 
 async function loadComments(postId){
@@ -682,10 +720,10 @@ img{width:100%;border-radius:8px;margin:20px 0}
 <div class="header"><h1>সাহিত্য বাতায়ন</h1><p>A Literary Portal</p></div>
 <div><span class="cat">${post.category}</span></div>
 <h1 class="title">${post.title}</h1>
-<div class="meta">✍️ ${post.author} | 📅 ${post.date}</div>
+<div class="meta">✍️ ${post.author} | 📅 ${post.date} | 👁️ ${toBn(statOf(post.id).views)} বার পঠিত</div>
 ${post.image?`<img src="${post.image}">`:''}
 <div class="content">${post.content.split('\n').map(p=>p.trim()?`<p>${p}</p>`:'').join('')}</div>
-<div class="footer">© ২০২৬ সাহিত্য বাতায়ন | সম্পাদক: মুহিতুল ইসলাম মুন্না | 📞 ০১৫৭৭৩৯৫৭</div>
+<div class="footer">© ২০২৬ সাহিত্য বাতায়ন কর্তৃক সর্বস্বত্ব সংরক্ষিত | সম্পাদক: মুহিতুল ইসলাম মুন্না</div>
 <script>
 function doPrint(){if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){window.print();});}else{window.print();}}
 window.onload=function(){setTimeout(function(){doPrint();},1500);};
@@ -703,6 +741,7 @@ document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'))
 document.querySelectorAll('.admin-content').forEach(c=>c.classList.remove('active'));
 btn.classList.add('active');document.getElementById('admin-'+tab).classList.add('active');
 if(tab==='pending')loadPending();
+if(tab==='edit')loadEditList();
 if(tab==='comments')loadAllComments();
 if(tab==='writers')loadAdminWriters();
 if(tab==='stats')loadAdminStats();
@@ -721,7 +760,33 @@ list.innerHTML=items.map(p=>`<div class="pending-item"><h4>${p.title}</h4>
 async function approveItem(action,id){
 if(!confirm('নিশ্চিত?'))return;
 const ok=await submitData({action,postId:id});
-if(ok){notify('✅ আপডেট হয়েছে');loadPending();initMain();}
+if(ok){notify('✅ আপডেট হয়েছে');localStorage.removeItem('sb_cache');loadPending();initMain();}
+}
+function loadEditList(){
+const list=document.getElementById('edit-list');
+if(!ALL_POSTS.length){list.innerHTML='<p style="text-align:center;padding:20px;color:var(--text-light)">কোনো প্রকাশিত লেখা নেই।</p>';return;}
+list.innerHTML=ALL_POSTS.map(p=>{const st=statOf(p.id);return `<div class="pending-item"><h4>${p.title}</h4>
+<div style="font-size:13px;color:var(--text-light);margin:5px 0">✍️ ${p.author} | 📁 ${p.category} | 👁️ ${toBn(st.views)} | ❤️ ${toBn(st.likes)}</div>
+<div class="pending-actions"><button class="small-btn" onclick="startEdit('${p.id}')">✏️ এডিট করুন</button></div></div>`;}).join('');
+}
+function startEdit(id){
+const p=ALL_POSTS.find(x=>x.id===id);if(!p)return;
+editingId=id;
+document.getElementById('ed-title').value=p.title;
+document.getElementById('ed-category').value=p.category;
+document.getElementById('ed-author').value=p.author;
+document.getElementById('ed-excerpt').value=p.excerpt||'';
+document.getElementById('ed-content').value=p.content||'';
+document.getElementById('ed-image').value=p.image||'';
+document.getElementById('edit-form-wrap').style.display='block';
+window.scrollTo(0,0);
+}
+async function saveEdit(){
+const code=document.getElementById('edit-code').value;
+if(!code){alert('সম্পাদক কোড দিন');return;}
+const ok=await submitData({action:'updatePost',postId:editingId,editorcode:code,title:document.getElementById('ed-title').value,category:document.getElementById('ed-category').value,author:document.getElementById('ed-author').value,excerpt:document.getElementById('ed-excerpt').value,content:document.getElementById('ed-content').value,image:document.getElementById('ed-image').value});
+if(ok){notify('✅ লেখা আপডেট হয়েছে');document.getElementById('edit-form-wrap').style.display='none';localStorage.removeItem('sb_cache');initMain();loadEditList();}
+else{alert('❌ কোড ভুল বা আপডেট ব্যর্থ');}
 }
 async function loadAllComments(){
 const comments=await fetchData('getAllComments');
@@ -743,10 +808,15 @@ if(!ALL_WRITERS.length){list.innerHTML='<p style="text-align:center;padding:30px
 list.innerHTML=ALL_WRITERS.map(writerCardHTML).join('');
 }
 async function loadAdminStats(){
+const res=await Promise.all([fetchData('getStats'),fetchData('getPostStats')]);
+const stats=res[0]||{};const pst=Array.isArray(res[1])?res[1]:[];
+let tv=0,tl=0;pst.forEach(s=>{tv+=s.views||0;tl+=s.likes||0;});
 document.getElementById('admin-stats-content').innerHTML=`<div class="stats-grid" style="margin-top:20px">
 <div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(ALL_POSTS.length)}</span><span class="stat-label" style="color:var(--text-light)">প্রকাশিত লেখা</span></div>
 <div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(ALL_WRITERS.length)}</span><span class="stat-label" style="color:var(--text-light)">লেখক</span></div>
-<div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(localStorage.getItem('sb_visitors')||0)}</span><span class="stat-label" style="color:var(--text-light)">ভিজিটর</span></div></div>`;
+<div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(stats.visitors||0)}</span><span class="stat-label" style="color:var(--text-light)">মোট ভিজিটর</span></div>
+<div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(tv)}</span><span class="stat-label" style="color:var(--text-light)">মোট ভিউ</span></div>
+<div class="stat-item" style="background:var(--bg-light)"><span class="stat-number" style="color:var(--primary)">${toBn(tl)}</span><span class="stat-label" style="color:var(--text-light)">মোট লাইক</span></div></div>`;
 }
 
 function writerCardHTML(w){
@@ -827,7 +897,7 @@ e.preventDefault();
 const btn=document.getElementById('w-submit');btn.disabled=true;btn.textContent='পাঠানো হচ্ছে...';
 const data={action:'submitPost',title:document.getElementById('w-title').value,category:document.getElementById('w-category').value,author:document.getElementById('w-author').value,excerpt:document.getElementById('w-excerpt').value,content:document.getElementById('w-content').value,imageData:imageData,featured:document.getElementById('w-featured').checked?'yes':'',editorcode:document.getElementById('w-code').value,date:banglaToday()};
 const ok=await submitData(data);
-if(ok){notify(data.editorcode===EDITOR_CODE?'✅ প্রকাশিত!':'✅ জমা হয়েছে! অনুমোদনের পর প্রকাশিত হবে।');this.reset();imageData='';document.getElementById('w-preview').style.display='none';setTimeout(showMain,1500);}
+if(ok){notify(data.editorcode===EDITOR_CODE?'✅ প্রকাশিত!':'✅ জমা হয়েছে! অনুমোদনের পর প্রকাশিত হবে।');this.reset();imageData='';document.getElementById('w-preview').style.display='none';localStorage.removeItem('sb_cache');setTimeout(showMain,1500);}
 btn.disabled=false;btn.textContent='জমা দিন';
 });
 
